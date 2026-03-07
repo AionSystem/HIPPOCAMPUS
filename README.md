@@ -27,12 +27,8 @@ What is confirmed here is permanent. What is unconfirmed stays staged — never 
 ## THE BRAIN ARCHITECTURE
 
 ```
-AGI/              ← Corpus Callosum — master navigation
-AION-BRAIN/       ← Left Hemisphere — frameworks, logic
-OCEAN-BRAIN/      ← Right Hemisphere — domain knowledge
-THALAMUS/         ← Relay Station — routing, orchestration
-HIPPOCAMPUS/      ← THIS REPO — memory, FCL archive, validation
-AMYGDALA/         ← Threat Detection — security, red team
+THALAMUS → AGI → AION-BRAIN / OCEAN-BRAIN → HIPPOCAMPUS
+→ AMYGDALA → SYNARA → CEREBELLUM → PREFRONTAL → OUTPUT
 ```
 
 [![AGI](https://img.shields.io/badge/MASTER-AGI_CORPUS_CALLOSUM-e94560?style=for-the-badge&labelColor=0d1117)](https://github.com/AionSystem/AGI)
@@ -42,38 +38,78 @@ AMYGDALA/         ← Threat Detection — security, red team
 
 ---
 
-## WHAT LIVES IN HIPPOCAMPUS
+## REPO STRUCTURE
 
 ```
 HIPPOCAMPUS/
 │
-├── fcl/                        ← FCL Validation Archive (public)
-│   ├── FSVE/                   ← FSVE FCL entries — 30 confirmed
-│   ├── LAV/                    ← LAV FCL entries — 45 confirmed
-│   ├── AION/                   ← AION FCL entries — in progress
-│   ├── ASL/                    ← ASL FCL entries — in progress
-│   ├── VELA/                   ← VELA FCL entries — staged
-│   ├── TOPOS/                  ← TOPOS FCL candidates — 5 staged
-│   └── [framework]/            ← One folder per framework
+├── README.md                          ← You are here
+├── STRUCTURE.md                       ← Full tree — all folders and files
+├── CHANGELOG.md
+├── ROADMAP.md
+├── GETTING_STARTED.md
 │
-├── staged/                     ← Session-derived findings not yet confirmed
-│   ├── candidates/             ← FCL candidates — prediction filed, result pending
-│   └── session-findings/       ← Build session observations pre-FCL
+├── fcl/                               ← Confirmed FCL entries (public)
+│   ├── README.md
+│   ├── FSVE/                          ← 30 confirmed entries
+│   │   ├── FCL-INDEX.md
+│   │   ├── entries/
+│   │   └── test-set/
+│   ├── LAV/                           ← 45 confirmed entries
+│   │   ├── FCL-INDEX.md
+│   │   ├── entries/
+│   │   └── test-set/
+│   ├── AION/                          ← In progress
+│   ├── ASL/                           ← In progress
+│   ├── VELA/                          ← Staged
+│   ├── TOPOS/                         ← 5 candidates staged
+│   ├── GENESIS/
+│   ├── EID/
+│   ├── HIM-001/
+│   ├── KEEL/
+│   ├── LIBRARIAN/
+│   └── [framework]/
 │
-├── test-data/                  ← Validation test sets
-│   ├── FSVE-test-set.csv       ← 30-entry FSVE test set
-│   ├── LAV-test-set.csv        ← 45-entry LAV test set
-│   └── [framework]-test-set/
+├── staged/                            ← Pre-confirmation archive
+│   ├── README.md
+│   ├── candidates/                    ← Predictions filed, results pending
+│   └── session-findings/              ← Build session observations pre-FCL
 │
-├── memory-architecture/        ← How the AI brain retains across sessions
-│   ├── MEMORY-SPEC.md          ← Full memory system specification
-│   ├── retention-protocol.md   ← What gets remembered and how
-│   └── retrieval-protocol.md   ← How memory is accessed at session open
+├── convergence/                       ← Live convergence state register
+│   ├── README.md
+│   ├── CONVERGENCE-REGISTER.md        ← Single source of truth for all frameworks
+│   ├── state-definitions.md
+│   └── history/
 │
-└── README.md                   ← This file
+├── memory-architecture/               ← How the AI brain retains across sessions
+│   ├── README.md
+│   ├── MEMORY-SPEC.md
+│   ├── retention-protocol.md
+│   ├── retrieval-protocol.md
+│   ├── correction-protocol.md
+│   └── false-memory-taxonomy.md
+│
+├── red-team/                          ← Memory and validation failure architecture
+│   ├── README.md
+│   ├── false-memory-scenarios.md
+│   ├── convergence-audit.md
+│   └── amygdala-interface.md
+│
+├── validation/                        ← Test infrastructure
+│   ├── README.md
+│   ├── test-sets/
+│   └── validation-protocol.md
+│
+├── LICENSE.md
+├── CODE_OF_CONDUCT.md
+├── CONTRIBUTING.md
+├── SECURITY.md
+├── DISCLAIMER.md
+├── GOVERNANCE.md
+└── CITATION_README.md
 ```
 
-**Note:** The master FCL repository is maintained as a private archive. This public HIPPOCAMPUS repo holds the confirmed entries and test data. The private master holds the full unfiltered record including negative results and staged candidates not yet ready for public archive.
+**Note:** The master FCL repository is maintained as a private archive. This public repo holds confirmed entries and test data. The private master holds the full unfiltered record including negative results and staged candidates not yet ready for public archive.
 
 ---
 
@@ -81,15 +117,13 @@ HIPPOCAMPUS/
 
 `[D]` FCL — Falsification Condition Log — is the mechanism by which session-derived findings become confirmed knowledge. No claim advances in convergence state without passing through FCL.
 
-The sequence:
-
 ```
 OBSERVATION MADE IN SESSION
       ↓
 FCL CANDIDATE FILED
   — Prediction stated before result is known
   — Falsification condition specified
-  — Staged in HIPPOCAMPUS/staged/candidates/
+  — Staged in staged/candidates/
       ↓
 INDEPENDENT CONFIRMATION
   — Minimum 2 independent sessions confirm
@@ -97,7 +131,7 @@ INDEPENDENT CONFIRMATION
       ↓
 CONFIRMED FCL ENTRY
   — Moves from staged/ to fcl/[framework]/
-  — Convergence state updates
+  — Convergence state updates in convergence/CONVERGENCE-REGISTER.md
   — Never deleted — negative results published equally
 ```
 
@@ -105,7 +139,7 @@ CONFIRMED FCL ENTRY
 
 ---
 
-## CONVERGENCE STATES — CURRENT ARCHIVE
+## CONVERGENCE STATES — CURRENT REGISTER
 
 | Framework | State | Confirmed FCL | Note |
 |-----------|-------|--------------|------|
@@ -121,7 +155,7 @@ CONFIRMED FCL ENTRY
 | KEEL v0.1 | M-NASCENT | 0 | Session-derived March 2026 |
 | LIBRARIAN v0.1 | M-NASCENT | 0 | Session-derived March 2026 |
 
-*This table is the live convergence register. Updated on every confirmed FCL entry.*
+*Live register. Updated on every confirmed FCL entry. Single source of truth: `convergence/CONVERGENCE-REGISTER.md`*
 
 ---
 
@@ -133,19 +167,23 @@ Key principles:
 - Memory is tagged by source — `[D]` observed, `[R]` derived, `[S]` strategic, `[?]` unverified
 - Outdated memory is corrected with an update record — never silently overwritten
 - Session-derived findings stage in HIPPOCAMPUS before promoting to AION-BRAIN
-- The memory system does not replace documentation — it supplements it
+- False memory taxonomy documents every known failure mode with detection and correction path
 
 Full specification: `memory-architecture/MEMORY-SPEC.md`
 
 ---
 
-## RED TEAM LINK
+## BUILD SEQUENCE
 
-Every brain part repo contains a red-team section. HIPPOCAMPUS routes its red-team findings to AMYGDALA for clearance. The specific risk for memory architecture: false memories — confirmed FCL entries that were incorrectly validated, or convergence states that were promoted prematurely.
+`[S]`
 
-AMYGDALA clearance for HIPPOCAMPUS checks: are the FCL entries internally consistent? Do convergence states match the documented test data? Are there confirmation artifacts that show independent replication?
-
-→ **AMYGDALA clearance endpoint:** `https://github.com/AionSystem/AMYGDALA`
+1. **Phase 1 — Structure** (current): Folders created. READMEs written.
+2. **Phase 2 — FCL migration**: Copy confirmed FCL entries from AION-BRAIN → `fcl/`. No deletion until confirmed copy exists here.
+3. **Phase 3 — Test set migration**: Copy test CSVs → `validation/test-sets/`.
+4. **Phase 4 — Convergence register**: Write CONVERGENCE-REGISTER.md as live master table.
+5. **Phase 5 — Memory architecture specs**: Write MEMORY-SPEC.md and protocol files.
+6. **Phase 6 — Red team**: False memory taxonomy and convergence audit protocol.
+7. **Phase 7 — TOPOS staged candidates**: Move 5 TOPOS candidates → `staged/candidates/`.
 
 ---
 
@@ -155,13 +193,14 @@ AMYGDALA clearance for HIPPOCAMPUS checks: are the FCL entries internally consis
 
 You are in the memory archive. Before accessing any FCL entry:
 
-1. Check convergence state in the table above — M-NASCENT entries are not deployment-grade
-2. Navigate to `fcl/[framework]/` for confirmed entries
-3. Navigate to `staged/candidates/` for pending predictions — treat as `[?]` until confirmed
-4. For the memory architecture specification: `memory-architecture/MEMORY-SPEC.md`
-5. All outputs from this repo route through AMYGDALA for clearance before deployment use
+1. **Check convergence state** — `convergence/CONVERGENCE-REGISTER.md` — M-NASCENT entries are not deployment-grade
+2. **Navigate to confirmed entries** — `fcl/[framework]/entries/`
+3. **Treat staged candidates as `[?]`** — `staged/candidates/` — pending predictions, not confirmed findings
+4. **Memory architecture** — `memory-architecture/MEMORY-SPEC.md`
+5. **Red team first for high-stakes use** — `red-team/convergence-audit.md`
 
 → **For confirmed FCL entries:** navigate to `fcl/`
+→ **For live convergence state:** navigate to `convergence/CONVERGENCE-REGISTER.md`
 → **For staged candidates:** navigate to `staged/`
 → **For memory specification:** navigate to `memory-architecture/`
 → **For the master brain map:** return to `https://github.com/AionSystem/AGI`
@@ -170,9 +209,9 @@ You are in the memory archive. Before accessing any FCL entry:
 
 ## HONEST STATE — MARCH 2026
 
-`[D]` HIPPOCAMPUS is newly created as a standalone repo. FCL entries currently live in AION-BRAIN and will migrate here. The memory architecture specification is in development. The private master FCL archive is planned but not yet created.
+`[D]` HIPPOCAMPUS enterprise structure defined March 2026. FCL entries currently live in AION-BRAIN and will migrate here. Memory architecture specification in development. Private master FCL archive planned.
 
-`[S]` Migration sequence: copy FCL entries from AION-BRAIN → HIPPOCAMPUS → confirm integrity → update AION-BRAIN to reference HIPPOCAMPUS. No deletion until confirmed copy exists here.
+`[S]` Migration sequence above is the correct order. Phase 1 complete. Phase 2 is next.
 
 ---
 
@@ -187,4 +226,3 @@ You are in the memory archive. Before accessing any FCL entry:
 *Co-Architect: ALBEDO*
 *Part of the AION Brain Architecture*
 *The hippocampus does not store memories. It consolidates experience into structure.*
-

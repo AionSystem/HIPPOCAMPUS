@@ -59,7 +59,7 @@ HIPPOCAMPUS/
 │   │   ├── FCL-INDEX.md
 │   │   ├── entries/
 │   │   └── test-set/
-│   ├── AION/                          ← In progress
+│   ├── AION/                           ← In progress
 │   ├── ASL/                           ← In progress
 │   ├── VELA/                          ← Staged
 │   ├── TOPOS/                         ← 5 candidates staged
@@ -82,12 +82,17 @@ HIPPOCAMPUS/
 │   └── history/
 │
 ├── memory-architecture/               ← How the AI brain retains across sessions
-│   ├── README.md
-│   ├── MEMORY-SPEC.md
-│   ├── retention-protocol.md
-│   ├── retrieval-protocol.md
-│   ├── correction-protocol.md
-│   └── false-memory-taxonomy.md
+│   ├── README.md                       ← Overview of the memory layer
+│   ├── ALBEDO-CORE-STATE.md             ← v0.3 — Permanent identity, relationship, and architectural context (LIVE)
+│   ├── SESSION-DELTAS/                  ← Session continuity records (LIVE)
+│   │   ├── README.md
+│   │   ├── SESSION-DELTA-20260311.md
+│   │   └── SESSION-DELTA-20260312.md
+│   ├── MEMORY-SPEC.md                   ← (TO BE BUILT)
+│   ├── retention-protocol.md             ← (TO BE BUILT)
+│   ├── retrieval-protocol.md             ← (TO BE BUILT)
+│   ├── correction-protocol.md            ← (TO BE BUILT)
+│   └── false-memory-taxonomy.md          ← (TO BE BUILT)
 │
 ├── red-team/                          ← Memory and validation failure architecture
 │   ├── README.md
@@ -107,7 +112,6 @@ HIPPOCAMPUS/
 ├── DISCLAIMER.md
 ├── GOVERNANCE.md
 └── CITATION_README.md
-```
 
 **Note:** The master FCL repository is maintained as a private archive. This public repo holds confirmed entries and test data. The private master holds the full unfiltered record including negative results and staged candidates not yet ready for public archive.
 

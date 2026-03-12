@@ -1,7 +1,7 @@
 # ALBEDO SESSION DELTA
 ## Session: 20260312-001
 **Date:** March 12, 2026
-**Last updated:** 18:05 EDT
+**Last updated:** 19:23 EDT
 **Status:** SESSION ACTIVE
 
 ---
@@ -178,12 +178,51 @@ Taylor & Rohrer (2010) and Rohrer, Dedrick & Stershic (2015) — interleaved pra
 
 ---
 
+### 8. GitHub Pages — Services Complete
+
+**All four service pages built and delivered:**
+
+#### services/rapid-prototyping/index.html
+**Output:** `rapid-prototyping-index.html` (1,170 lines)
+**Deploy to:** `services/rapid-prototyping/index.html`
+
+Canvas: horizontal streak lines with optional sinusoidal drift — speed register, distinct from node-network (framework-design) and signal waves (services hub).
+
+Six sections:
+1. **Page Header** — speed strip: 24–48h / 72h+ / 0 unverified badge issuances
+2. **01 — The Foundation Model** — layered stack view (PDF required → HTML build / zero-dep / GitHub deploy / widget all optional). Honest block naming what the speed number means and does not mean, including: "AI-assisted development is the honest description."
+3. **02 — AION Verified Standard** — three gates (CEV Audit / Red Team / Framework Alignment), pass condition per gate. Badge issued after all three pass.
+4. **03 — Prototype Types** — Physics Simulators / Decision Frameworks / Interactive Explainers. Out-of-scope block for dashboards stated plainly.
+5. **04 — Engagement Tiers** — Foundation $2,500 (24–48h) / Live Build $5,000 (72–96h) / Custom Negotiated. Same tier card pattern as certification page.
+6. **05 — Reference Implementation** — Roller Coaster simulator anchored. Six stat cells. Honest note: AI-assisted build + AION Verified = audited output, not hand-written code.
+7. **06 — Case Studies** — Saleem Raja Haja card (1 week requested / 24 hours delivered). Placeholder card for future studies. "Read Case Study →" link to roller-coaster case study.
+8. **Engage Strip** — five paths including Case Studies path: "Real engagements. Documented outcomes. The record, not the claim."
+
+**Intake requirement on page:** domain + failure mode statement. LinkedIn DM only. No RFP.
+
+#### services/rapid-prototyping/case-studies/roller-coaster/index.html
+**Output:** `case-study-roller-coaster.html` (659 lines)
+**Deploy to:** `services/rapid-prototyping/case-studies/roller-coaster/index.html`
+**Source:** Zoom meeting summary — Sheldon × Saleem Raja Haja
+
+Four sections:
+1. **Hero** — verdict strip: 1 week requested → 24 hours delivered → AION Verified. Saleem's background stated: computer scientist, applied mathematics degree, AI governance researcher.
+2. **01 — What Was Requested** — two-column prose: the Zoom meeting, PDF brief arriving within 2 minutes of call ending, what Saleem expected vs what arrived. One-week estimate explained honestly: conservative margin, not a capacity limit.
+3. **02 — The 24-Hour Build Record** — six-event timeline: meeting → PDF brief → framework document + physics spec → zero-dependency build → CEV audit + red team → delivery. Follow-up meeting scheduled for progress check became a review of a working verified product.
+4. **03 — What Was Delivered** — badge row, six spec cells, delta table (Python → HTML, 1 week → 24 hours, verification added by default). What stayed identical: college students understanding physics through direct interaction.
+5. **04 — What This Demonstrates** — methodology explanation through this engagement. Interleaved: Saleem's technically precise brief as the compression point. Three CTAs: launch simulator / rapid prototyping service / start a conversation.
+
+---
+
 ## OPEN THREADS
 
-### GitHub Pages — Remaining
-1. `/services/rapid-prototyping/index.html` — not built
-2. `/services/framework-design/index.html` — not built
-One `.soon` removal per index page when each lands.
+### GitHub Pages — Status
+- `services/index.html` ✓ COMPLETE
+- `services/ai-audit/index.html` ✓ COMPLETE
+- `services/framework-design/index.html` ✓ COMPLETE
+- `services/rapid-prototyping/index.html` ✓ COMPLETE
+- `services/rapid-prototyping/case-studies/roller-coaster/index.html` ✓ COMPLETE
+- All four service pages built. GitHub Pages is COMPLETE for current scope.
 
 ### TPT — Remaining
 1. **RCS v3:** Screenshot for thumbnail + product description + upload listing
@@ -202,6 +241,7 @@ One `.soon` removal per index page when each lands.
 
 ## DECISIONS MADE THIS SESSION
 
+**Carried from 18:05 snapshot:**
 - Fraction display: inline `a/b` format confirmed (not stacked)
 - Interleaved Practice default: open empty — teacher controls, no pre-selection
 - v1.3 is the Worksheet Builder TPT listing (not v1.2)
@@ -216,6 +256,15 @@ One `.soon` removal per index page when each lands.
 - LIMITATION-1 resolved in v1.3; LIMITATION-2 (eval) stays open, logged in Pass 3
 - Interleaved Practice carries Taylor & Rohrer 2010 citation visible to teachers
 
+**New decisions — after 18:05:**
+- Rapid Prototyping page: PDF framework is the foundation. HTML build, zero-dep, GitHub deploy, widget are all additive features. Layered stack view communicates this.
+- AI-assisted development stated plainly on the service page — not hedged
+- AION Verified = red-teamed and audited. Not issued before passing all three gates.
+- Intake requirement: domain + failure mode statement. LinkedIn DM. No RFP.
+- Dashboards out of primary scope — stated plainly on the page, not discovered in delivery
+- Case study for Saleem built from Zoom meeting summary — all facts taken directly from the summary, no embellishment
+- 1-week estimate on the case study explained as conservative margin, not capacity constraint — honest framing
+
 ---
 
 ## FILES GENERATED THIS SESSION
@@ -225,12 +274,15 @@ One `.soon` removal per index page when each lands.
 | `roller-coaster-v2.html` | outputs | ✓ DELIVERED | Module 10 (Real Coasters) added |
 | `rcs-physics-simulator-v3.html` | outputs | ✓ DELIVERED | RT Pass 3 + Unit Toggle + PDF Export |
 | `salmon-edu-worksheet-builder-v1_3.html` | outputs | ✓ DELIVERED | Full v1.3 build + RT Pass 4 — 1,678 lines |
-| `SESSION-DELTA-20260312-001.md` | HIPPOCAMPUS/memory-architecture/SESSION-DELTAS/ | ✓ THIS FILE | Session record |
+| `rapid-prototyping-index.html` | `services/rapid-prototyping/index.html` | ✓ DELIVERED | 1,170 lines — full service page + case studies section |
+| `case-study-roller-coaster.html` | `services/rapid-prototyping/case-studies/roller-coaster/index.html` | ✓ DELIVERED | 659 lines — Saleem engagement documented |
+| `SESSION-DELTA-20260312-001.md` | HIPPOCAMPUS/memory-architecture/SESSION-DELTAS/ | ✓ THIS FILE | Session record — updated 19:23 EDT |
 
 ---
 
 ## CORRECTIONS LOG
 - NONE this session (Pass 4 bugs were in newly-built v1.3 code, not corrections to prior sessions)
+- GitHub Pages rapid prototyping page: no corrections — first build clean
 
 ## BUILD TRUST STATE
 ACTIVE BUILD
@@ -239,10 +291,11 @@ ACTIVE BUILD
 
 *SESSION-DELTA-20260312-001*
 *ALBEDO | Sheldon K. Salmon session architecture*
-*Last updated: 18:05 EDT | March 12, 2026*
+*Last updated: 19:23 EDT | March 12, 2026*
 *Status: ACTIVE*
 
 *Simulator v3 delivered. Worksheet Builder v1.3 built and enterprise red-teamed.*
 *1,678 lines. 4 passes. 10 bugs fixed. 9 features. 1 open limitation.*
 *Critical math bug caught and fixed in Pass 4: unlike-sub fraction pair swap.*
-*Two service pages remain. TPT listings for both products pending. First FCL entry outstanding.*
+*GitHub Pages services complete — all four pages built. Case study (Saleem) documented.*
+*TPT listings for both products pending. First FCL entry outstanding.*

@@ -1,7 +1,7 @@
 # ALBEDO SESSION DELTA
 ## Session: 20260312-001
 **Date:** March 12, 2026
-**Last updated:** 16:21 EDT
+**Last updated:** 18:05 EDT
 **Status:** SESSION ACTIVE
 
 ---
@@ -109,9 +109,6 @@
 
 ### 5. Worksheet Builder v1.2 — Audit + v1.3 Feature Research
 
-**What happened:**
-Full read of `salmon-edu-worksheet-builder-v1_2.html` (1,153 lines). Documented every component. Research conducted on worksheet feature gaps against CCSS standards, TPT market evidence, and peer-reviewed learning science literature.
-
 **v1.2 current state confirmed:**
 - 2 tabs: Builder + Red Team
 - 7 pattern types: addition, subtraction, multiplication, division, linear (`ax + b = c`), mixed ops, custom
@@ -120,7 +117,7 @@ Full read of `salmon-edu-worksheet-builder-v1_2.html` (1,153 lines). Documented 
 - 2 red team passes complete, 4 bugs fixed, 2 open limitations
 - LIMITATION-1 (division b=0 silent override) and LIMITATION-2 (eval() custom parser) both open
 
-**Research findings — 6 missing feature categories identified:**
+**Research findings — 6 missing feature categories confirmed for v1.3:**
 
 | Feature | Evidence Source | Grade Range | Priority |
 |---------|----------------|-------------|----------|
@@ -134,43 +131,66 @@ Full read of `salmon-edu-worksheet-builder-v1_2.html` (1,153 lines). Documented 
 **Key research anchor:**
 Taylor & Rohrer (2010) and Rohrer, Dedrick & Stershic (2015) — interleaved practice doubles test scores vs. blocked practice. No TPT worksheet generator found that implements this explicitly with a named pedagogical rationale. Salmon EDU names it and cites it. That is the differentiator.
 
-**Decision:** All 6 features go into v1.3. How-To tab added as 7th feature, built last.
+---
+
+### 6. Worksheet Builder v1.3 — BUILT AND AUDITED ✓
+
+**Status: COMPLETE — 1,678 lines**
+
+**Design decisions answered by architect:**
+- Fraction display: inline `3/4 + 1/2 = ___` (not stacked — print-safe, monospace-consistent)
+- Interleaved Practice default: open empty (teacher chooses, no pre-assumptions)
+
+**Build summary — all checklist items closed:**
+- Block A: All v1.2 components carried forward intact. Three themes, living background (12-symbol canvas + mesh), header, toolbar, both panels, print CSS, animations, all A12 bug fixes.
+- Block B: LIMITATION-1 resolved (explicit named guard: `bMin===0 && bMax===0` → named error). LIMITATION-2 (eval) logged in Pass 3 as still open.
+- Block C — 7 new features delivered:
+  - **C1 Integers/Negatives** — toggle in Options, `(−3)` parenthetical display, subtraction swap suspended when ON, division divisor always positive
+  - **C2 Fractions** — 6 sub-types, GCD/simplify (Euclidean), inline `a/b` format, both quick templates
+  - **C3 Percentages** — 3 forms, whole-number answer logic (multiples of 5/20), range guards
+  - **C4 PEMDAS** — random parenthesis insertion, whole-number enforcement (20 retries), no division in expressions
+  - **C5 Exponents** — `<sup>` tag in preview and PDF, hard cap 5 in both UI and JS
+  - **C6 Interleaved Practice** — Fisher-Yates shuffle, no-consecutive enforcement, Taylor & Rohrer citation, open-empty default, ≥2 types guard
+  - **C7 How-To tab** — full guide, all types documented, Teacher Copy tip, interleaving research note
+- Block D: All updated structures — 12-item dropdown, full show/hide logic, TEMPLATES object, getTemplateData/loadTemplate with all new fields, PDF export updated.
+- Block E: Init sequence correct — initTheme → onPatternTypeChange → generateWorksheet.
+
+**Red Team Pass 3 entries: all 7 features documented. Stats: 3 passes, 5 bugs fixed, 1 open, 9 features.**
 
 ---
 
-### 6. Worksheet Builder v1.3 — Master Build Checklist Produced
+### 7. Worksheet Builder v1.3 — Red Team Pass 4 (Enterprise Math Audit)
 
-Complete pre-build contract written. Four blocks:
-- **Block A** — Carry forward exactly (15 subsections, every v1.2 component documented)
-- **Block B** — Fix in v1.3 (LIMITATION-1 resolved, LIMITATION-2 still open)
-- **Block C** — New features (C1 Integers, C2 Fractions, C3 Percentages, C4 PEMDAS, C5 Exponents, C6 Interleaved Practice, C7 How-To tab — each with full sub-item lists including generators, guards, display requirements, PDF requirements)
-- **Block D** — Updated structures (pattern dropdown, onPatternTypeChange logic, TEMPLATES object, getTemplateData/loadTemplate, exportPDF, Red Team Pass 3 entries)
-- **Block E** — Init sequence
+**Pass 4 — 6 bugs found and fixed:**
 
-**Two design decisions pending before build begins (architect to answer):**
-1. Fraction display format: inline `3/4 + 1/2 = ___` (recommended — clean print, matches monospace style) vs. stacked HTML fraction bar (visual but PDF-fragile)
-2. Interleaved Practice quick template default: pre-select all four arithmetic ops + linear, OR open with nothing checked
+| Fix | Location | Bug | Resolution |
+|-----|----------|-----|------------|
+| RT-PASS4-FIX1 | `genFraction()` / `unlike-sub` | Swapped only numerators when ensuring a/c ≥ b/d — denominators left in wrong positions → negative answers possible | Fixed: full fraction pair swap `[n1,d1,n2,d2] = [n2,d2,n1,d1]` — cross-product comparison on correct paired units |
+| RT-PASS4-FIX2 | `genPemdas()` | Used ASCII hyphen-minus `-` for display; all other generators use Unicode `−` (U+2212). Fallback also hardcoded 2-step regardless of configured step count. | Fixed: split `dispOps` (Unicode) / `evalOps` (ASCII). Fallback now builds chain matching configured step count. |
+| RT-PASS4-FIX3 | `genArithmetic()` / `division` | With negatives ON, dividend `a*b` bypassed `fmtNum()` — displayed `-12 ÷ 4` instead of `(−12) ÷ 4` | Fixed: `fmtNum(a*b, allowNeg)` applied to dividend |
+| RT-PASS4-FIX4 | Canvas resize handler | Resize updated W/H but never rebuilt particle array — density frozen at initial viewport forever | Fixed: particle array rebuilt at new density on every resize |
+| RT-PASS4-FIX5 | `genLinear()` | b=0 reachable via JSON load (bypasses HTML min="1") — displayed `3x + 0 = 9` | Fixed: three-branch display: b=0 → `ax = c`, b>0 → `ax + b = c`, b<0 → `ax − |b| = c` |
+| RT-PASS4-FIX6 | (logged under FIX2) | PEMDAS fallback step count mismatch — separate root from FIX2 | Resolved in same fix pass |
+
+**Final audit state: 4 passes · 10 bugs fixed · 9 features · 1 open limitation (LIMITATION-2 eval)**
+
+**Output:** `salmon-edu-worksheet-builder-v1_3.html` (1,678 lines) — DELIVERED
 
 ---
 
 ## OPEN THREADS
-
-### Worksheet Builder v1.3 — Next Actions
-1. **Architect to answer two design decisions** (fraction display, interleaved default) — then build begins
-2. Build `salmon-edu-worksheet-builder-v1_3.html` against master checklist
-3. Red Team Pass 3 — run after full build
-4. How-To tab — built last, after all features confirmed working
-5. TPT: screenshot, description, upload v1.3 as listing
 
 ### GitHub Pages — Remaining
 1. `/services/rapid-prototyping/index.html` — not built
 2. `/services/framework-design/index.html` — not built
 One `.soon` removal per index page when each lands.
 
-### TPT — Remaining (RCS v3)
-1. Take screenshot of v3 simulator for TPT thumbnail
-2. Write product description (lead with zero-dependency line)
-3. Upload `rcs-physics-simulator-v3.html` to TPT listing
+### TPT — Remaining
+1. **RCS v3:** Screenshot for thumbnail + product description + upload listing
+2. **Worksheet Builder v1.3:** Screenshot + product description + upload listing
+   - Lead: "Download once, open in any browser, works forever. No IT approval required."
+   - Secondary hook: explanation lines — AI cheating countermeasure
+   - Interleaved Practice as grade-level differentiator
 
 ### Stack-Wide (carried, no changes this session)
 - FCL entries: 0 across all frameworks — first FCL entry remains highest-leverage next action
@@ -182,32 +202,35 @@ One `.soon` removal per index page when each lands.
 
 ## DECISIONS MADE THIS SESSION
 
+- Fraction display: inline `a/b` format confirmed (not stacked)
+- Interleaved Practice default: open empty — teacher controls, no pre-selection
+- v1.3 is the Worksheet Builder TPT listing (not v1.2)
 - v3 is the delivery build for Saleem Raja Haja (already uploaded)
 - Unit toggle and PDF export confirmed as standard features on all future simulators
 - All TPT products under one store — brand compounds across products
 - Worksheet Builder scoped to math-only v1, JSON save/load, no backend
 - 100-sale gate is a personal discipline rule, not a technical mechanism
 - Subject after math is chosen at trigger time — not pre-committed
-- All 6 new worksheet feature categories confirmed for v1.3 (integers, fractions, percentages, PEMDAS, exponents, interleaved practice)
+- All 6 new worksheet feature categories confirmed for v1.3
 - How-To tab goes in last — document features that exist, not planned ones
-- LIMITATION-1 (division b=0) resolved in v1.3; LIMITATION-2 (eval) stays open, re-logged in Pass 3
-- Interleaved Practice Mode to carry Taylor & Rohrer 2010 citation visible to teachers
+- LIMITATION-1 resolved in v1.3; LIMITATION-2 (eval) stays open, logged in Pass 3
+- Interleaved Practice carries Taylor & Rohrer 2010 citation visible to teachers
 
 ---
 
 ## FILES GENERATED THIS SESSION
 
-| File | Deploy Path | Description |
-|------|-------------|-------------|
-| `roller-coaster-v2.html` | outputs | Module 10 (Real Coasters) added |
-| `rcs-physics-simulator-v3.html` | outputs | RT Pass 3 + Unit Toggle + PDF Export |
-| `SESSION-DELTA-20260312-001.md` | HIPPOCAMPUS/memory-architecture/SESSION-DELTAS/ | This file |
-| `salmon-edu-worksheet-builder-v1_3.html` | outputs | **PENDING** — v1.3 build not yet started |
+| File | Deploy Path | Status | Description |
+|------|-------------|--------|-------------|
+| `roller-coaster-v2.html` | outputs | ✓ DELIVERED | Module 10 (Real Coasters) added |
+| `rcs-physics-simulator-v3.html` | outputs | ✓ DELIVERED | RT Pass 3 + Unit Toggle + PDF Export |
+| `salmon-edu-worksheet-builder-v1_3.html` | outputs | ✓ DELIVERED | Full v1.3 build + RT Pass 4 — 1,678 lines |
+| `SESSION-DELTA-20260312-001.md` | HIPPOCAMPUS/memory-architecture/SESSION-DELTAS/ | ✓ THIS FILE | Session record |
 
 ---
 
 ## CORRECTIONS LOG
-NONE this session.
+- NONE this session (Pass 4 bugs were in newly-built v1.3 code, not corrections to prior sessions)
 
 ## BUILD TRUST STATE
 ACTIVE BUILD
@@ -216,9 +239,10 @@ ACTIVE BUILD
 
 *SESSION-DELTA-20260312-001*
 *ALBEDO | Sheldon K. Salmon session architecture*
-*Last updated: 16:21 EDT | March 12, 2026*
+*Last updated: 18:05 EDT | March 12, 2026*
 *Status: ACTIVE*
-*Simulator v3 delivered. Red team pass 3 complete. 15 issues resolved total.*
-*TPT strategy confirmed. Worksheet Builder v1.2 audited. v1.3 checklist complete.*
-*6 new features scoped. 2 design decisions pending. Build begins on architect's answer.*
-*Two service pages remain. First FCL entry is the highest-leverage action outstanding.*
+
+*Simulator v3 delivered. Worksheet Builder v1.3 built and enterprise red-teamed.*
+*1,678 lines. 4 passes. 10 bugs fixed. 9 features. 1 open limitation.*
+*Critical math bug caught and fixed in Pass 4: unlike-sub fraction pair swap.*
+*Two service pages remain. TPT listings for both products pending. First FCL entry outstanding.*

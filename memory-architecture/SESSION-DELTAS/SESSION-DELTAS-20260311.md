@@ -1,8 +1,8 @@
 # ALBEDO SESSION DELTA
 ## Session: 20260311-001
 **Date:** March 11, 2026
-**Last updated:** 22:42 EDT
-**Status:** SESSION ACTIVE
+**Last updated:** 23:41 EDT
+**Status:** SESSION CLOSED
 
 ---
 
@@ -162,35 +162,159 @@
 
 ---
 
+### 5. AION Verified Simulator Badge v1.0
+
+**What happened:** New certification badge type designed and built from scratch. Distinct from all STP tiers — new shape, new palette, new purpose.
+
+**Specifications:**
+- Shape: Octagonal precision seal (vs. STP hexagonal shield)
+- Palette: Black (#0d0b08) + Gold (#D4AF37, #F5E070) — distinct from STP amber (#f0a500)
+- Central motif: 3-cycle sine wave with glow filter — physics simulation universal language
+- Detail ring: 24 chronometer tick marks (major at N/E/S/W)
+- Arced text: "AION · VERIFIED" top / "· SIMULATOR ·" sub-arc / "SHELDON K. SALMON" bottom
+- Separator diamonds at E/W with N/S accent dots
+- Seal line: `NON-TRANSFERABLE · SHA-256 · STP SEALED`
+- Version label: `v1.0 · 2026 · AION STACK`
+- Full gradient system: goldLinear, goldSheen, waveGold, bgFill, innerBg, dimGold
+- Glow filter on wave (feGaussianBlur + feColorMatrix gold-toned)
+- Drop shadow filter on outer octagon
+
+**Badge ecosystem distinction:**
+| Badge | Issued to | Shape | Palette |
+|-------|-----------|-------|---------|
+| STP Certified | Organizations | Hexagonal shield | Amber (#f0a500) |
+| AION Verified Simulator | Tools/simulations | Octagonal seal | Gold (#D4AF37) |
+| STP Certified Auditor | Individuals | Hexagonal shield variant | Cyan (#40c4ff) |
+
+**Files produced:**
+- `aion-verified-simulator-badge-v1.svg` — standalone SVG, 400×400 viewBox
+- `badge-preview.html` — full preview page with 4 sizes, embed code, inline demo, ecosystem comparison
+
+**Embedded in:** `roller_coaster_simulator.html` footer — inline SVG, zero external dependencies, links to `AionSystem/STP/blob/main/CERTIFICATION.md`
+
+---
+
+### 6. Roller Coaster Physics Simulator — Badge Footer Added
+
+**What happened:** AION Verified Simulator badge embedded into the complete roller coaster simulator HTML file.
+
+**Footer contents:**
+- Full inline SVG badge (110px) — no external file dependency, single HTML file preserved
+- Badge links to `https://github.com/AionSystem/STP/blob/main/CERTIFICATION.md`
+- Attribution: Sheldon K. Salmon × ALBEDO
+- Audit trail text: Citation-backed · Red-teamed (2 passes, 10 issues resolved) · Peer-reviewed
+- Reference: Tony Wayne *Roller Coaster (AP) Physics* — Abridged Edition
+- Recipient: Saleem Raja Haja · AI Governance, Energy Sector · Kuwait · March 2026
+
+**Output file:** `roller_coaster_simulator.html` (81,187 bytes) — complete, deploy-ready
+
+---
+
+### 7. AionSystem.github.io — Full Pages Site Architecture
+
+**What happened:** Complete GitHub Pages site designed and built. Tree redesigned from DeepSeek baseline with three structural corrections.
+
+**Tree corrections vs. DeepSeek:**
+1. Root is `index.html` not `README.md` — Pages site needs designed HTML, not markdown render
+2. `/simulators/` not `/projects/` — clean shareable URL for client delivery
+3. `/certify/` added as live directory — badge needs a verification portal, not just CERTIFICATION.md
+
+**Files built this session:**
+
+| File | Path | Status |
+|------|------|--------|
+| `index.html` | `aionsystem.github.io/` | ✅ Built |
+| `simulators/index.html` | `/simulators/` | ✅ Built |
+| `certify/index.html` | `/certify/` | ✅ Built — updated with full precision badge |
+| `about/index.html` | `/about/` | ✅ Built |
+| `README.md` | repo root | ✅ Built |
+| `roller-coaster/index.html` | `/simulators/roller-coaster/` | ✅ Exists — rename on deploy |
+
+**Design system (consistent across all pages):**
+- Fonts: Share Tech Mono + Barlow Condensed
+- Palette: `--amber: #f0a500` · `--gold: #D4AF37` · `--bg: #08090b`
+- Animated canvas background: sine-wave signals + drifting particle nodes
+- Grid-gap-as-border layout technique
+- Sticky nav, staggered hero animations, `cubic-bezier(0.16, 1, 0.3, 1)` easing
+
+**Page summaries:**
+
+`index.html` — Hero with animated canvas, name + title, mission statement, three CTAs (See Work / Engage Services / Verify Certification), services grid (3 cards), work strip (1 live + 3 coming-soon simulators), AION Stack table with convergence states, certification strip, footer.
+
+`simulators/index.html` — Hub catalog with domain filter bar, live/coming-soon status badges, roller coaster card marked ● Live, 5 coming-soon cards (Projectile Motion, Bridge Structural, Pipeline Flow, Pharmacokinetics, Climate), AION Verified methodology note.
+
+`certify/index.html` — Three-badge ecosystem display (STP Certified / AION Verified Simulator / STP Auditor), how-to-verify for each type, certification philosophy block ("ledger with failures is honest"), four STP tiers with pricing, GitHub issue CTA.
+
+`about/index.html` — Two-column layout. Left: position statement, 5 operating principles, co-authorship block, what I build. Right: sticky sidebar with identity data, stack convergence per framework, contact links. Not a resume — a position.
+
+`README.md` — Repo card. Navigation table, AION stack table, simulator status table, engagement section, legal note.
+
+---
+
+### 8. SESSION-DELTA Fetch Architecture — Bug Identified and Fixed
+
+**What happened:** Session open protocol in ALBEDO operating instructions specifies `main` branch for HIPPOCAMPUS delta fetch. HIPPOCAMPUS repo has one branch: `HIPPOCAMPUS`. All prior delta fetches have silently failed.
+
+**Root cause:** Operating instructions contain:
+```
+Fetch last 3 SESSION-DELTAS entries from `memory-architecture/SESSION-DELTAS/`
+```
+No branch specified. Tool defaults to `main`. HIPPOCAMPUS branch is `HIPPOCAMPUS`.
+
+**Fix required in operating instructions:** Session open fetch URL should be:
+```
+https://raw.githubusercontent.com/AionSystem/HIPPOCAMPUS/HIPPOCAMPUS/memory-architecture/SESSION-DELTAS/
+```
+Also: raw.githubusercontent.com URLs require user provision — tool permission model blocks self-constructed raw URLs. Workaround: paste raw URL directly to unlock fetch.
+
+**CORE-STATE branch note:** CORE-STATE.md fetches successfully from `main` — that file is on the correct branch. Only SESSION-DELTAS were on the wrong branch in the instructions.
+
+---
+
 ## OPEN THREADS
 
-### FSVE v3.6 — Open for v3.7
-1. **Gini small-n range note:** For n=2, max G = 0.50; G < 0.15 threshold may never trigger for very small reviewer pools. An n-correction may be warranted.
-2. **CRA_raw diagnostic field:** `CRA = max(0, ...)` floors lose magnitude information. A `CRA_raw` field preserving the raw value for diagnostics without changing escalation logic.
-3. **k_bottleneck = 1.5** — requires FCL calibration
-4. **Gini and Entropy/ES thresholds** — require FCL calibration
-5. **EV threshold 0.70** — requires FCL calibration (NBP-LAW-EV-01)
-6. **Reviewer coverage claim (~95%)** — requires issue taxonomy publication
-7. **Embedding corpus** — must be version-pinned for D and X axes
-
-### CPA-001 v2.2 — Open for v2.3
-1. **DFS coefficient calibration** (NBP-CPA-002) — 0.70/0.30 split requires FCL
-2. **OEI weighting calibration** (NBP-CPA-003) — equal weighting requires FCL
-3. **Confidence ceiling calibration** (NBP-CPA-001) — all 5 tier values require FCL
-4. **Semantic density thresholds** (50–65%) — require patient readability FCL
-5. **RS equal weighting** — requires domain expert review per adapter
-6. **LEGAL domain adapter** — future session
-7. **FINANCIAL domain adapter** — future session
+### Immediate — Before Saleem Call (~March 16)
+1. Upload 5 files to `AionSystem.github.io` repo tonight: `index.html`, `simulators/index.html`, `certify/index.html`, `about/index.html`, `README.md`
+2. Add roller coaster simulator as `simulators/roller-coaster/index.html`
+3. Enable GitHub Pages on HIPPOCAMPUS branch root — confirm live URL
+4. Draft LinkedIn cover message to Saleem Raja Haja — send simulator URL
+5. Fix SESSION-DELTA fetch URL in ALBEDO operating instructions (branch: HIPPOCAMPUS)
 
 ### GitHub Pages — Remaining
-1. **`/services/framework-design/index.html`** — not yet built. Source: AION-BRAIN repo, DUAL-HELIX spec, CEV methodology, CDIP/FSVE framework specs. Will need framework list, CEV process, convergence ladder, engagement path.
-2. **`/services/rapid-prototyping/index.html`** — not yet built. Source: Roller Coaster simulator as reference implementation, AION Verified badge spec, red team methodology, domain list. Will need to show the live example prominently.
-3. These two pages complete the four-folder services structure.
+1. `/services/framework-design/index.html` — not yet built
+2. `/services/rapid-prototyping/index.html` — not yet built
+3. These two complete the four-folder services structure
+
+### FSVE v3.6 — Open for v3.7
+1. Gini small-n range note — n-correction for very small reviewer pools
+2. CRA_raw diagnostic field — preserve raw value before max(0,...) floor
+3. k_bottleneck = 1.5 — requires FCL calibration
+4. Gini and Entropy/ES thresholds — require FCL calibration
+5. EV threshold 0.70 — requires FCL calibration (NBP-LAW-EV-01)
+6. Reviewer coverage claim (~95%) — requires issue taxonomy publication
+7. Embedding corpus — must be version-pinned for D and X axes
+
+### CPA-001 v2.2 — Open for v2.3
+1. DFS coefficient calibration (NBP-CPA-002) — 0.70/0.30 split requires FCL
+2. OEI weighting calibration (NBP-CPA-003) — equal weighting requires FCL
+3. Confidence ceiling calibration (NBP-CPA-001) — all 5 tier values require FCL
+4. Semantic density thresholds (50–65%) — require patient readability FCL
+5. RS equal weighting — requires domain expert review per adapter
+6. LEGAL domain adapter — future session
+7. FINANCIAL domain adapter — future session
 
 ### Stack-Wide
-1. **GitHub fetch not executable** in current environment — ALBEDO-CORE-STATE.md and SESSION-DELTA history not accessible. Paste DEEP LAYER directly to activate CONSTELLATION register.
-2. **CDIP v1.5 open actions** (carried from prior session): DISC-001 MAJOR (Validation LDS source verification), tier boundary formula registration, FI Protocol I resolution, Breakthrough re-audit. Not touched this session.
-3. **FCL entries: 0 across all frameworks** — FSVE, CPA-001, CDIP all M-MODERATE. First FCL entry is the highest-leverage next action.
+1. FCL entries: 0 across all frameworks — FSVE, CPA-001, CDIP all M-MODERATE. First FCL entry is highest-leverage next action.
+2. CDIP v1.5 open actions (carried): DISC-001 MAJOR (Validation LDS source verification), tier boundary formula registration, FI Protocol I resolution, Breakthrough re-audit. Not touched this session.
+
+### Simulator Pipeline — Q2 2026
+1. Projectile Motion Simulator — next after Pages live
+2. Bridge Structural Load Simulator
+3. Pipeline Flow Simulator (Bernoulli/Venturi — energy sector relevance for Saleem)
+
+### Memory Architecture
+1. CORE-STATE.md last updated March 10 — needs update to reflect March 11 stack state (FSVE v3.6, CPA-001 v2.2, GitHub Pages live)
+2. SESSION-DELTA fetch URL needs correction in operating instructions
 
 ---
 
@@ -199,21 +323,43 @@
 - FSVE v3.5 Gini formula retired permanently (GINI-FSVE-ERR-001) — all v3.5 laundering clearances using Gini are void; re-run required under v3.6
 - CPA-001 BRS formula was not computable in v2.1 — all prior BRS values are `[?]` unverified
 - Minimum E for FSVE VALID status is ≥0.62, not ≥0.75 — bottleneck shifts to L at that crossing
-- Services hub page built — `/services/index.html` live and ready to deploy
-- AI Audit page built — `/services/ai-audit/index.html` live and ready to deploy; gold palette, full STP spec
+- AION Verified Simulator badge is a distinct certification type — octagonal, gold palette, issued to tools not organizations
+- GitHub Pages tree uses `/simulators/` not `/projects/` — clean deliverable URLs
+- `/certify/` is a live verification portal, not just a link to CERTIFICATION.md
+- SESSION-DELTA branch is `HIPPOCAMPUS` — operating instructions need correction
+
+---
 
 ## FILES GENERATED THIS SESSION
 
 | File | Deploy Path | Description |
 |------|------------|-------------|
-| `FSVE_v3_6.md` | AION-BRAIN / HIPPOCAMPUS | FSVE CEV audit output |
-| `CPA-001_v2_2.md` | AION-BRAIN / HIPPOCAMPUS | CPA-001 FSVE v3.6 audit output |
+| `FSVE_v3_6.md` | AION-BRAIN / HIPPOCAMPUS | FSVE CEV audit output — 8 findings resolved |
+| `CPA-001_v2_2.md` | AION-BRAIN / HIPPOCAMPUS | CPA-001 FSVE v3.6 audit — 12 findings resolved |
 | `services-index.html` | `services/index.html` | Services hub — 3 service blocks |
 | `ai-audit-index.html` | `services/ai-audit/index.html` | AI Output Certification — 6 sections, full STP spec |
+| `aion-verified-simulator-badge-v1.svg` | `assets/badges/` | New badge type — black/gold octagonal seal |
+| `badge-preview.html` | reference | Badge preview — 4 sizes, embed code, ecosystem |
+| `roller_coaster_simulator.html` | `simulators/roller-coaster/index.html` | Complete simulator with badge footer embedded |
+| `index.html` | `aionsystem.github.io/` | Root landing page — hero, services, work, stack |
+| `simulators/index.html` | `/simulators/` | Simulator hub — live + 5 coming-soon |
+| `certify/index.html` | `/certify/` | Badge verification portal — 3 types, 4 tiers |
+| `about/index.html` | `/about/` | Architect position statement — two-column |
+| `README.md` | repo root | Repo card — navigation + stack tables |
+| `AIONSYSTEM-PAGES-TREE.md` | reference | File tree spec with build order and URL strategy |
+
+---
 
 ## CORRECTIONS LOG
+
 - ALBEDO stated projected EV = 0.845 in FSVE v3.5 — wrong. Correct: 0.8227. Root cause: did not model bottleneck shift.
 - ALBEDO did not flag the Gini sign error when FSVE v3.5 was originally produced — CEV scan this session was the instrument that caught it.
+- SESSION-DELTA branch mismatch: operating instructions specified `main`, correct branch is `HIPPOCAMPUS` — all prior delta fetches silently failed.
+
+---
+
+## EMOTIONAL REGISTER AT CLOSE
+High output. Midnight window. Building into it. The Pages site is real — five pages, one badge, one stamped simulator, ready to hand to Saleem.
 
 ## BUILD TRUST STATE
 ACTIVE BUILD
@@ -222,5 +368,5 @@ ACTIVE BUILD
 
 *SESSION-DELTA-20260311-001*
 *ALBEDO | Sheldon K. Salmon session architecture*
-*Last updated: 22:42 EDT | March 11, 2026*
-*Session still active — framework-design and rapid-prototyping pages remaining*
+*Last updated: 23:41 EDT | March 11, 2026*
+*Session closed.*

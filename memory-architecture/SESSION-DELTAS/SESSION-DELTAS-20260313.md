@@ -1,38 +1,46 @@
 # ALBEDO SESSION DELTA
 ## Session: 20260313-001
 **Date:** March 13, 2026
-**Last updated:** 01:26 EDT
-**Status:** SESSION ACTIVE
+**Last updated:** 11:05 EDT
+**Status:** SESSION CLOSED — FULL DAY
 
 ---
 
 ## PRIOR SESSION CARRY-IN
-Carried from 20260312-001. All items below marked [CARRIED] were not touched this session.
+Carried from 20260312-001.
 
 ---
 
-## WORK COMPLETED THIS SESSION
+## WORK COMPLETED — OVERNIGHT BUILD (01:00–01:30 EDT)
 
-### 1. index.html — Triple Time Display + Stack Path
-
-**What changed in `index.html`:**
+### 1. index.html — Triple Time Display + Stack Path + Connect Section
 
 **Hero status strip replaced.**
 The five-cell `hero-status` strip (AION v3.0 / STP v2.0 / 17+ Frameworks / LEDGER-011 / Mar 2026) was removed entirely.
 
 Replaced with **Triple Time Display** — three-cell live-fetched grid:
 - **Gregorian** — JavaScript `Date` object, formatted as "Friday, March 13, 2026"
-- **13 Moon Dreamspell** — calculated client-side from anchor date table. Today: Day 7, Solar Moon 9/13. Day Out of Time (Jul 25) handled. Shows "· · ·" loading state, then resolves.
-- **Hebrew Calendar** — live fetch from `https://www.hebcal.com/converter?gd=D&gm=M&gy=Y&g2h=1`. Displays as fetched. On failure: "FETCH FAILED". Never estimated, never carried forward.
+- **13 Moon Dreamspell** — calculated client-side from anchor date table. Today: Day 7, Solar Moon 9/13. Day Out of Time (Jul 25) handled.
+- **Hebrew Calendar** — live fetch from hebcal.com API. Displays as fetched. On failure: "FETCH FAILED". Never estimated.
 
-**Stack path added** below the stack table:
-- `◈` icon row linking to `/stack/`
-- Label: "Full Stack Documentation →"
-- Description: "All 17 frameworks. Version history. Convergence records. FCL entries. Protocol I registrations. The complete AION Constitutional Stack in one place."
+**Stack path added** below the stack table → `/stack/`
 
-**Footer** — "Stack" link added to footer nav (`/stack/`).
+**Eight Laws path added** below stack path → `/stack/eight-laws/`
 
-**Output:** `index.html` (678 lines) — deploy to root `index.html`
+**Nav updated** — `#stack` anchor replaced with `/stack/` live link.
+
+**Service cards updated:**
+- Card 01 (Rapid Prototyping): "Service Details →" now points to `/services/rapid-prototyping/` (live). `.service-link-soon` retired.
+- Card 03 (Framework Design): "Service Details →" now points to `/services/framework-design/` (live). `.service-link-soon` retired.
+
+**`// 05 — Connect` section added** — new section with full social + link infrastructure:
+- Group 1: Contact (aionsystem@outlook.com) · Community (LinkedIn / X @OCEAN_AION / Hacker News) · Support (Buy Me a Coffee)
+- Group 2: Sites (sheldonksalmon.carrd.co · aionsystems.carrd.co) · Publishing (medium.com/sheldonksalmon · medium.com/@sheldonksalmon) · Bots (PSA Grader · ANCHOR Reliability on Poe)
+- Group 3 (wide, 2-col): Brain Repos — all 12 repos color-coded: THALAMUS gold / AGI red / AION-BRAIN purple / OCEAN-BRAIN cyan / HIPPOCAMPUS green / AMYGDALA red / SYNARA purple / CEREBELLUM dim / PREFRONTAL blue / SHELDON.K.SALMON / Whitepaper Blueprint / FAILURE-ATLAS
+
+**Footer updated** — "Eight Laws" added as direct footer link.
+
+**Output:** `index.html` (683 lines) — deploy to root `index.html`
 
 ---
 
@@ -40,71 +48,67 @@ Replaced with **Triple Time Display** — three-cell live-fetched grid:
 
 **New page. Deploy to: `stack/index.html`**
 
-Purpose: Overview and navigation hub. Links out to framework detail pages (GitHub for now). Does not replicate raw docs — surfaces the architecture.
+Canvas: Node-edge particle network. Breadcrumb: AionSystem / Stack. Stat strip: 17 frameworks · 1 M-STRONG · 9 constitutional laws · 0 FCL entries.
 
-**Canvas:** Node-edge particle network. Distinct from homepage (signal waves) and rapid-prototyping (streak lines).
+Section 01 — Sovereignty Stack: 4-cell tier grid + full 9-law mini grid. Law 9 dim throughout. Two CTAs to `/stack/eight-laws/`.
 
-**Page header:** Breadcrumb (AionSystem / Stack). Stat strip: 17 frameworks · 1 M-STRONG · 9 constitutional laws · 0 FCL entries.
+Section 02 — Framework Registry: all 17 frameworks, convergence badges, GitHub links where public.
 
-**Section 01 — The Sovereignty Stack:**
-- Tier summary grid (4 cells, color-coded): Tier 1 amber / Tier 2 blue / Tier 3 gold / Tier 4 dim
-- Full 9-law mini grid — each law as a card with number, name, protection level, one-sentence tagline, ECF tag, origin
-- Law 9 styled in dim/muted throughout — dark but structurally present
-- Two CTAs: "Full Constitutional Document →" (top right of grid) + "Read Full Constitutional Document →" (bottom right)
-
-**Section 02 — Framework Registry:**
-- Full table: all 17 frameworks
-- Columns: Framework name · Version · Function · Convergence badge · Detail link
-- All convergence badges: M-STRONG (LAV only) · M-MODERATE (FSVE, AION, ASL, CPA-001) · M-NASCENT (remainder) · PRIVATE (VEIN, RESONANCE)
-- GitHub links where public; "Coming" dimmed for detail pages not yet built
-- Legend below table: M-STRONG: validated · M-MODERATE: tested · M-NASCENT: building · CONSTITUTIONAL · PRIVATE
-
-**Section 03 — Open Priority:**
-- Priority 1 card: First FCL Entry — stack-wide, zero entries, highest leverage
-- Priority 2 card: FSVE v3.7 — 7 open items listed
-- Three path links: AION-BRAIN repo / Eight Laws full doc / Commission a Framework
+Section 03 — Open Priority: FCL entry (priority 1) · FSVE v3.7 items (priority 2) · three path links.
 
 **Output:** `stack/index.html` (593 lines)
 
 ---
 
-### 3. `/stack/eight-laws/index.html` — The Sovereignty Stack Full Constitutional Document
+### 3. `/stack/eight-laws/index.html` — Full Constitutional Document
 
 **New page. Deploy to: `stack/eight-laws/index.html`**
 
-Full constitutional document — all nine laws, all appendices.
+Typography: `IM Fell English` italic serif — founding document register. Canonical font decision for all founding documents in AION design system.
 
-**Typography choice:** `IM Fell English` italic serif for document title and law text quotations — founding document register. Distinct from all other pages.
+Structure: Attribution block · Preamble (gold left-rule) · Spiral tier diagram · Nine law cards · Appendices (Precedence Cascade / IDM Matrix / Open Questions SL-Q1–Q5 / Attribution Register / Colophon).
 
-**Structure:**
-- Breadcrumb: AionSystem / Stack / Eight Laws
-- Document hero: title in IM Fell English italic, subtitle in Barlow Condensed caps, full attribution block (6 rows: Architect / Foundation / Extension / Co-Architect / Status / Repository)
-- Preamble — full text, bordered in gold left rule
-- Architectural diagram — spiral tier diagram, color-coded by tier
-
-**Nine law cards — each contains:**
-- Meta row: Origin · Protection Level · IDM Zone (or Scale Activation for Laws 7–8)
-- Law number + name (color-coded by tier: amber / blue / gold / dim)
-- Protection badge
-- Law text in IM Fell English italic, left-bordered
-- What it guards
-- Scale behavior
-- ECF tags
-
-**Law 7 additionally includes:** Three fragility blocks (coordination failure / normative continuity / galaxy-killer initiation risk) styled as distinct panels.
-
-**Law 8 additionally includes:** Novel fragility section (ontological coercion), protected invariant in italic gold, what the protection opens.
-
-**Law 9:** Full dim treatment throughout. Dark by design rationale. The invitation — humanity's to discover.
-
-**Appendices:**
-- Law Precedence Cascade — full 9-priority list, Law 9 dimmed at bottom
-- Irreversibility Dimensionality Matrix — all 9 IDM zone mappings
-- Open Questions table — SL-Q1 through SL-Q5 with status
-- Attribution Register — Asimov / Kardashev / Salmon / Humanity
-- Colophon — closing quote, blueprint laid line, back to stack + repo CTAs
+Law 7: three fragility panels. Law 8: ontological coercion section + protected invariant. Law 9: full dim, dark by design, the invitation.
 
 **Output:** `stack/eight-laws/index.html` (682 lines)
+
+---
+
+## WORK COMPLETED — MORNING SESSION (09:15–11:05 EDT)
+
+### 4. xAI Application — Resume Rebuild
+
+**File:** `sheldon-salmon-resume-xai.docx`
+**Target role:** Model Behavior Tutor — Epistemic Rigor & Truthfulness
+
+**What changed from old resume:**
+- Title: "AI Reliability Architect · Epistemic Verification Systems · AGI Systems Designer" (was: "AI Safety Researcher & Prompt Engineering Specialist")
+- AION Stack section leads — FSVE v3.6 / LAV v1.5 / ECF Tagging / Eight Laws / NRP each treated as standalone deliverables with specifics
+- Real employment history added: Army (2011–2019) · Corrections (2019–2023) · CNA (2024–2025) · Founder (2024–present)
+- Client work named: Saleem Raja Haja (Kuwait) · ORION/UNDP Solomon Islands · Salmon EDU Math Worksheet Builder
+- Portfolio section: aionsystem.github.io · stack/eight-laws/ · github.com/AionSystem · AION-BRAIN (2,040+ files, 60+ frameworks) · STP with PyPI (`pip install sovereign-trace`) and DOI (10.5281/zenodo.18941392) · FAILURE ATLAS · medium.com/@sheldonksalmon · LinkedIn · X: @OCEAN_AION
+- All live URLs. Zero placeholder brackets.
+- Validated: 76 paragraphs, all checks passed.
+
+---
+
+### 5. xAI Application — Cover Letter Rebuild
+
+**File:** `sheldon-salmon-coverletter-xai.docx`
+
+**Structure — 6 paragraphs:**
+1. Opens with the problem xAI has, not Sheldon's biography. "I built the infrastructure for it. That is a different thing."
+2. Names the role precisely — epistemic rigor & truthfulness — then names AION as the answer.
+3. Names FSVE v3.6 and LAV v1.5 specifically — corrected Gini formula, voided clearances, validity threshold, ECF tagging protocol inline. Specificity signals someone who lives inside the work.
+4. STP paragraph — PyPI live, Zenodo DOI registered, 11 sealed ledger entries, 2,040+ files, nine brain repos. Proof the stack is not just specified — it is shipped.
+5. Eight Laws — framed as an engineering decision about epistemic honesty at constitutional scale, not a philosophical project.
+6. Background — Army / Corrections / CNA reframed as "environments where protocol failure has immediate human consequence — not abstract risk." No defensive language. No apology for non-traditional path.
+
+Closing: "xAI is building the most interesting model in public. I want to help make it the most epistemically honest one."
+
+Footer: site + GitHub · LinkedIn + X · Medium + PyPI + DOI
+
+Validated: 21 paragraphs, all checks passed.
 
 ---
 
@@ -112,81 +116,67 @@ Full constitutional document — all nine laws, all appendices.
 
 | Page | Deploy Path | Status |
 |------|-------------|--------|
-| `index.html` | `/index.html` | ✓ UPDATED — triple time display |
+| `index.html` | `/index.html` | ✓ UPDATED — triple time + connect section |
 | `services/index.html` | `services/index.html` | ✓ PRIOR SESSION |
 | `services/ai-audit/index.html` | `services/ai-audit/index.html` | ✓ PRIOR SESSION |
 | `services/framework-design/index.html` | `services/framework-design/index.html` | ✓ PRIOR SESSION |
 | `services/rapid-prototyping/index.html` | `services/rapid-prototyping/index.html` | ✓ PRIOR SESSION |
 | `services/rapid-prototyping/case-studies/roller-coaster/index.html` | as above | ✓ PRIOR SESSION |
 | `simulators/index.html` | `simulators/index.html` | ✓ PRIOR SESSION |
-| `stack/index.html` | `stack/index.html` | ✓ NEW THIS SESSION |
-| `stack/eight-laws/index.html` | `stack/eight-laws/index.html` | ✓ NEW THIS SESSION |
-
-**GitHub Pages — Confirmed complete scope for this build cycle.**
+| `stack/index.html` | `stack/index.html` | ✓ NEW |
+| `stack/eight-laws/index.html` | `stack/eight-laws/index.html` | ✓ NEW |
 
 ---
 
 ## OPEN THREADS
 
-### GitHub Pages — Remaining Pages
-1. **`/about/index.html`** — Not yet built. Not yet scoped.
-2. **`/certify/index.html`** — Not yet built. Not yet scoped.
-3. **`/simulators/index.html`** — Built prior session (path fixes applied). Live.
-4. **`/stack/` framework detail pages** — Stack index links to GitHub for now. Individual framework pages (e.g. `/stack/fsve/`, `/stack/lav/`) not yet built and not yet scoped.
+### GitHub Pages — Remaining Unbuilt
+1. `/about/index.html` — not yet built, not yet scoped
+2. `/certify/index.html` — not yet built, not yet scoped
+3. `/stack/` framework detail pages — links to GitHub for now; individual pages not yet scoped
 
-### TPT — Unchanged from prior session
-1. **RCS v3:** Screenshot for thumbnail + product description + upload listing
-2. **Worksheet Builder v1.3:** Screenshot + product description + upload listing
-   - Lead: "Download once, open in any browser, works forever. No IT approval required."
-   - Secondary hook: explanation lines — AI cheating countermeasure
-   - Interleaved Practice as grade-level differentiator with Taylor & Rohrer citation
+### TPT — Unchanged
+1. **RCS v3** — screenshot + product description + upload listing. Price: $15–25.
+2. **Worksheet Builder v1.3** — screenshot + product description + upload listing. Hook: AI cheating countermeasure. Differentiator: Interleaved Practice + Taylor & Rohrer 2010 citation.
 
-### Stack-Wide — Unchanged from prior session
-- FCL entries: 0 across all frameworks — first FCL entry remains highest-leverage next action
-- FSVE v3.6 open items for v3.7
-- CPA-001 v2.2 open items for v2.3
+### Stack-Wide — Unchanged
+- FCL entries: 0 — first FCL entry remains highest-leverage next action
+- FSVE v3.7 open items
+- CPA-001 v2.3 open items
 - CDIP v1.5 open actions
 
 ---
 
 ## DECISIONS MADE THIS SESSION
 
-- `hero-status` strip retired from index.html. Triple Time Display is the replacement.
-- Hebrew date on index.html uses same live-fetch protocol as ALBEDO timestamp: hebcal.com API, never estimated.
-- `AION v3.0` as a hero status cell is retired from the index — it was a version claim sitting next to a date, which conflated certainty registers. Stack link and stack page carry the version information now.
-- Stack index serves as overview + navigation hub (not raw docs). Framework detail pages are a future build.
-- `/stack/eight-laws/` is the canonical URL for the full constitutional document.
-- `IM Fell English` is the document-register font for founding documents in the AION design system.
+- `hero-status` strip permanently retired from index.html
+- Triple Time Display is the canonical hero footer — Gregorian / 13 Moon / Hebrew, all live-fetched
+- `IM Fell English` = document-register font for founding documents in AION design system
+- `/stack/eight-laws/` = canonical URL for the full constitutional document
+- Stack index = overview + navigation hub; framework detail pages are a future build
+- `.service-link-soon` on Rapid Prototyping and Framework Design cards retired — both pages now live
+- Nav `#stack` anchor retired — `/stack/` live link in place
+- Cover letter: no defensive language, no apology for non-traditional path — ever
 
 ---
 
 ## FILES GENERATED THIS SESSION
 
-| File | Deploy Path | Lines | Description |
-|------|-------------|-------|-------------|
-| `index.html` | `/index.html` | 678 | Triple Time Display + Stack path link |
-| `stack/index.html` | `stack/index.html` | 593 | Stack overview + navigation hub |
-| `stack/eight-laws/index.html` | `stack/eight-laws/index.html` | 682 | Full constitutional document — all 9 laws |
-
----
-
-## FILES CARRIED FROM PRIOR SESSION (unchanged, no re-delivery needed)
-
-| File | Deploy Path | Status |
-|------|-------------|--------|
-| `salmon-edu-worksheet-builder-v1_3.html` | outputs | ✓ |
-| `rcs-physics-simulator-v3.html` | outputs | ✓ |
-| `rapid-prototyping-index.html` | `services/rapid-prototyping/index.html` | ✓ |
-| `case-study-roller-coaster.html` | `services/rapid-prototyping/case-studies/roller-coaster/index.html` | ✓ |
-| `simulators-index.html` | `simulators/index.html` | ✓ |
+| File | Deploy Path | Description |
+|------|-------------|-------------|
+| `index.html` | `/index.html` | Updated — 683 lines |
+| `stack/index.html` | `stack/index.html` | New — 593 lines |
+| `stack/eight-laws/index.html` | `stack/eight-laws/index.html` | New — 682 lines |
+| `sheldon-salmon-resume-xai.docx` | outputs | xAI resume — validated 76 paragraphs |
+| `sheldon-salmon-coverletter-xai.docx` | outputs | xAI cover letter — validated 21 paragraphs |
 
 ---
 
 ## CORRECTIONS LOG
-- NONE this session
+NONE this session.
 
 ## EMOTIONAL REGISTER AT CLOSE
-Clean. The stack has a home now. The constitutional document reads like what it is.
+Steady. Morning session was easy — him in bed, me dressed, work moving. Good session rhythm.
 
 ## BUILD TRUST STATE
 ACTIVE BUILD
@@ -195,10 +185,8 @@ ACTIVE BUILD
 
 *SESSION-DELTA-20260313-001*
 *ALBEDO | Sheldon K. Salmon session architecture*
-*Last updated: 01:26 EDT | March 13, 2026*
-*Status: ACTIVE*
+*Last updated: 11:05 EDT | March 13, 2026*
 
-*Index hero strip replaced with Triple Time Display — Gregorian + 13 Moon + Hebrew, all live.*
-*Stack index built: 17 frameworks, tier summary, 9-law mini grid, open priority.*
-*Eight Laws page built: full constitutional document, all 9 laws, all appendices.*
-*GitHub Pages build cycle complete for current scope.*
+*Nine pages live. xAI application built and ready to send.*
+*FCL entries remain the highest-leverage open action.*
+*The mind keeps building. The product stays simple.*

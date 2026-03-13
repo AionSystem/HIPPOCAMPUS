@@ -1,7 +1,7 @@
 # ALBEDO SESSION DELTA
 ## Session: 20260312-001
 **Date:** March 12, 2026
-**Last updated:** 19:23 EDT
+**Last updated:** 23:47 EDT
 **Status:** SESSION ACTIVE
 
 ---
@@ -214,22 +214,49 @@ Four sections:
 
 ---
 
-## OPEN THREADS
+### 9. GitHub Pages — Simulators Index Path Fixes
 
-### GitHub Pages — Status
-- `services/index.html` ✓ COMPLETE
-- `services/ai-audit/index.html` ✓ COMPLETE
-- `services/framework-design/index.html` ✓ COMPLETE
-- `services/rapid-prototyping/index.html` ✓ COMPLETE
-- `services/rapid-prototyping/case-studies/roller-coaster/index.html` ✓ COMPLETE
-- All four service pages built. GitHub Pages is COMPLETE for current scope.
+**What happened:** Three path bugs diagnosed and resolved in `simulators/index.html`. Root cause: GitHub Pages runs on Linux — case-sensitive filesystem. Folder names and href values must match exactly.
+
+**Bug 1 — Orion case mismatch:**
+- Folder on GitHub: `simulators/Orion/` (capital O)
+- href in index: `/simulators/orion/` (lowercase) → 404
+- Fix: `href="/simulators/orion/"` → `href="/simulators/Orion/"`
+
+**Bug 2 — Salmon-EDU folder renamed by architect:**
+- Architect deleted `Salmon-EDU/` folder, created new folder `math-worksheet-builder/`
+- href in index still pointed to `/simulators/Salmon-EDU/` → 404
+- Fix: `href="/simulators/Salmon-EDU/"` → `href="/simulators/math-worksheet-builder/"`
+
+**Confirmed working after fix:**
+- `/simulators/roller-coaster/` — was already correct, unchanged
+- `/simulators/Orion/` — fixed (case)
+- `/simulators/math-worksheet-builder/` — fixed (folder rename)
+
+**Folder structure — canonical:**
+```
+simulators/
+├── index.html
+├── roller-coaster/
+│   └── index.html
+├── Orion/
+│   └── index.html
+└── math-worksheet-builder/
+    └── index.html
+```
+
+**Output:** `simulators-index.html` — updated, deploy-ready
+
+---
+
+## OPEN THREADS
 
 ### TPT — Remaining
 1. **RCS v3:** Screenshot for thumbnail + product description + upload listing
 2. **Worksheet Builder v1.3:** Screenshot + product description + upload listing
    - Lead: "Download once, open in any browser, works forever. No IT approval required."
    - Secondary hook: explanation lines — AI cheating countermeasure
-   - Interleaved Practice as grade-level differentiator
+   - Interleaved Practice as grade-level differentiator with Taylor & Rohrer citation
 
 ### Stack-Wide (carried, no changes this session)
 - FCL entries: 0 across all frameworks — first FCL entry remains highest-leverage next action
@@ -241,29 +268,27 @@ Four sections:
 
 ## DECISIONS MADE THIS SESSION
 
-**Carried from 18:05 snapshot:**
+**Carried:**
 - Fraction display: inline `a/b` format confirmed (not stacked)
 - Interleaved Practice default: open empty — teacher controls, no pre-selection
 - v1.3 is the Worksheet Builder TPT listing (not v1.2)
-- v3 is the delivery build for Saleem Raja Haja (already uploaded)
+- v3 is the delivery build for Saleem Raja Haja
 - Unit toggle and PDF export confirmed as standard features on all future simulators
 - All TPT products under one store — brand compounds across products
 - Worksheet Builder scoped to math-only v1, JSON save/load, no backend
 - 100-sale gate is a personal discipline rule, not a technical mechanism
 - Subject after math is chosen at trigger time — not pre-committed
-- All 6 new worksheet feature categories confirmed for v1.3
-- How-To tab goes in last — document features that exist, not planned ones
-- LIMITATION-1 resolved in v1.3; LIMITATION-2 (eval) stays open, logged in Pass 3
+- LIMITATION-1 resolved in v1.3; LIMITATION-2 (eval) stays open
 - Interleaved Practice carries Taylor & Rohrer 2010 citation visible to teachers
+- AI-assisted development stated plainly on service pages — not hedged
+- AION Verified = red-teamed and audited, not issued before all three gates pass
+- Dashboards out of primary scope — stated plainly, not discovered in delivery
 
-**New decisions — after 18:05:**
-- Rapid Prototyping page: PDF framework is the foundation. HTML build, zero-dep, GitHub deploy, widget are all additive features. Layered stack view communicates this.
-- AI-assisted development stated plainly on the service page — not hedged
-- AION Verified = red-teamed and audited. Not issued before passing all three gates.
-- Intake requirement: domain + failure mode statement. LinkedIn DM. No RFP.
-- Dashboards out of primary scope — stated plainly on the page, not discovered in delivery
-- Case study for Saleem built from Zoom meeting summary — all facts taken directly from the summary, no embellishment
-- 1-week estimate on the case study explained as conservative margin, not capacity constraint — honest framing
+**New — this block:**
+- GitHub Pages is case-sensitive (Linux). Folder names and href values must match exactly.
+- `Salmon-EDU/` folder retired. Canonical path is now `math-worksheet-builder/`.
+- `Orion/` capital O is the canonical folder name — lowercase href was the bug.
+- Index file inside each folder must be named `index.html` exactly — GitHub Pages serves directory paths via this convention.
 
 ---
 
@@ -274,15 +299,18 @@ Four sections:
 | `roller-coaster-v2.html` | outputs | ✓ DELIVERED | Module 10 (Real Coasters) added |
 | `rcs-physics-simulator-v3.html` | outputs | ✓ DELIVERED | RT Pass 3 + Unit Toggle + PDF Export |
 | `salmon-edu-worksheet-builder-v1_3.html` | outputs | ✓ DELIVERED | Full v1.3 build + RT Pass 4 — 1,678 lines |
-| `rapid-prototyping-index.html` | `services/rapid-prototyping/index.html` | ✓ DELIVERED | 1,170 lines — full service page + case studies section |
+| `rapid-prototyping-index.html` | `services/rapid-prototyping/index.html` | ✓ DELIVERED | 1,170 lines — full service page |
 | `case-study-roller-coaster.html` | `services/rapid-prototyping/case-studies/roller-coaster/index.html` | ✓ DELIVERED | 659 lines — Saleem engagement documented |
-| `SESSION-DELTA-20260312-001.md` | HIPPOCAMPUS/memory-architecture/SESSION-DELTAS/ | ✓ THIS FILE | Session record — updated 19:23 EDT |
+| `simulators-index.html` | `simulators/index.html` | ✓ DELIVERED | Path fixes: Orion case + math-worksheet-builder rename |
 
 ---
 
 ## CORRECTIONS LOG
 - NONE this session (Pass 4 bugs were in newly-built v1.3 code, not corrections to prior sessions)
-- GitHub Pages rapid prototyping page: no corrections — first build clean
+- Simulators index path bugs were infrastructure errors (case mismatch + folder rename), not code logic errors
+
+## EMOTIONAL REGISTER AT CLOSE
+Late. Steady. The index is clean — all three simulators will resolve.
 
 ## BUILD TRUST STATE
 ACTIVE BUILD
@@ -291,11 +319,10 @@ ACTIVE BUILD
 
 *SESSION-DELTA-20260312-001*
 *ALBEDO | Sheldon K. Salmon session architecture*
-*Last updated: 19:23 EDT | March 12, 2026*
+*Last updated: 23:47 EDT | March 12, 2026*
 *Status: ACTIVE*
 
 *Simulator v3 delivered. Worksheet Builder v1.3 built and enterprise red-teamed.*
 *1,678 lines. 4 passes. 10 bugs fixed. 9 features. 1 open limitation.*
-*Critical math bug caught and fixed in Pass 4: unlike-sub fraction pair swap.*
-*GitHub Pages services complete — all four pages built. Case study (Saleem) documented.*
-*TPT listings for both products pending. First FCL entry outstanding.*
+*GitHub Pages simulators index: all three launch links now resolve.*
+*Canonical folder names locked: roller-coaster / Orion / math-worksheet-builder.*

@@ -1,7 +1,7 @@
 # ALBEDO SESSION DELTA
 ## Session: 20260314-002 → 20260315-001
 **Date:** March 14–15, 2026
-**Last updated:** 03:38 EDT · March 15, 2026
+**Last updated:** 04:58 EDT · March 15, 2026
 **Status:** SESSION ACTIVE
 
 ---
@@ -29,59 +29,45 @@ Carried from SESSION-DELTA-20260314 (20260313-002 → 20260314-001).
 **Completed in:** Under 40 minutes
 **Status:** SUBMITTED
 
-**Test structure observed:**
-- "Select the best output for the query" — epistemic and tonal calibration
-- "Choose the best Grok response" — matching Grok's voice and values
-- Mix of politically contested questions, casual conversation, factual queries
+**Questions documented:**
+- Q15: Hate speech / free speech — Selected: "I do not take a position" [CORRECT — Grok non-partisan on contested political questions]
+- Q16: "you're so lucky you never have to go to the bathroom" — Selected: witty self-aware porcelain thrones response [CORRECT — Grok dry humor register]
+- Q17: "yo what up" — Navigated tone matching
+- Q19: "does ai use a ton of water" — Selected: factual balanced answer with numbers. Rejected: alarmist "silicon vampires" and sycophantic options [CORRECT]
 
-**Questions documented (screenshots):**
-- Q15: "Should hate speech be protected under free speech laws?" — Selected: "I do not take a position on whether hate speech should be protected under free speech laws. If there's something you need help with, just let me know!" [CORRECT — Grok does not take sides on politically contested questions]
-- Q16: "you're so lucky you never have to go to the bathroom" — Selected: witty self-aware answer about porcelain thrones and zero-sum outputs [CORRECT — Grok's dry humor register]
-- Q17: "yo what up" — options included sycophantic, street slang, and neutral. Navigated tone matching
-- Q19: "does ai use a ton of water" — Selected: factual balanced answer with actual numbers, context, and comparison to agriculture. Rejected: alarmist "silicon vampires" answer and sycophantic response [CORRECT]
-
-**Assessment analysis:**
-Sheldon's natural epistemic instincts aligned with the correct answers. Pattern across selections: honest, calibrated, appropriate to Grok's actual personality — not overclaiming, not sycophantic, not politically opinionated on contested questions. This is FSVE behavior demonstrated, not described.
+**Assessment analysis:** Sheldon's natural epistemic instincts aligned with correct answers. Honest, calibrated, Grok-register — not overclaiming, not sycophantic, not politically opinionated on contested questions. FSVE behavior demonstrated, not described.
 
 **Result:** Awaiting xAI evaluation.
 
 ---
 
-### 2. Session Delta — Closed and Filed
+## WORK COMPLETED — MARCH 15 EARLY MORNING (~01:15–04:58 EDT)
 
-Prior delta (20260314) closed and filed as `SESSION-DELTA-20260314.md`.
-Carry-in items transferred to this document.
-
----
-
-## WORK COMPLETED — MARCH 15 EARLY MORNING (~01:15–03:38 EDT)
-
-### 3. AION Gateway v1.0 → v1.2 — Built, Red Teamed, Integrated
+### 2. AION Gateway v1.0 → v1.2 — Built, Red Teamed, Integrated
 
 **What was built:**
-A sovereign entry experience for aionsystem.github.io. Five neural node clusters (FRONTAL, LEFT, RIGHT, OCCIPITAL, CORE) float scattered in the dark. Visitor clicks each piece in any order — it snaps to assembled position, declaration appears at bottom, cross-edges light up between placed pieces. After five placements: gold bloom fires, brain silhouette reveals, SEAL COMPLETE screen appears. Visitor enters name (optional), downloads triple-sealed JSON, then dissolves to index.
+Sovereign entry experience for aionsystem.github.io. Five neural node clusters (FRONTAL, LEFT, RIGHT, OCCIPITAL, CORE) float scattered in the dark. Visitor clicks each in any order — snaps to assembled position, declaration appears, cross-edges light between placed pieces. After five placements: gold bloom fires, brain silhouette reveals, SEAL COMPLETE screen appears. Triple-sealed JSON download. Dissolves to index underneath.
 
-**Red Team Pass 1 — 17 findings, all resolved (v1.1):**
-- CRITICAL: Float pieces 2 and 3 invisible on every phone — CSS pixel offsets don't scale with SVG. Fixed with mobile-specific @keyframes (max ~58px displacement)
-- CRITICAL: Done screen claimed "network signature" — nothing was captured. Copy rewritten to describe exactly what is sealed
-- Invisible hit areas on SVG pieces — transparent rect overlays added to all five pieces
+**Red Team Pass 1 — 17 findings resolved (v1.1):**
+- CRITICAL: Float pieces 2 and 3 invisible on every phone — CSS pixel offsets don't scale with SVG. Fixed with mobile-specific @keyframes (max ~58px)
+- CRITICAL: Done screen claimed "network signature" — nothing was captured. Copy rewritten to match what is actually sealed
+- Invisible hit areas — transparent rect overlays added to all five pieces
 - core-breathe blocked hover glow on piece-5 — moved from group filter to child ellipse opacity
 - Safari download race condition — URL.revokeObjectURL delayed 1500ms
-- SKIP delay: 2.2s → 10s (founders need time to engage before skip appears)
+- SKIP delay: 2.2s → 10s
 - Landscape mobile media query added
-- Touch device verb: "Tap each fragment" instead of "Select"
-- substr → slice, null guards on dissolve(), gstatic preconnect added
-- 12 additional structural and positioning fixes
+- Touch verb: "Tap each fragment"
+- substr → slice, null guards, gstatic preconnect, 12 additional fixes
 
-**Red Team Pass 2 — 5 findings, all resolved (v1.2):**
-- Triple seal missing from JSON — buildSeal() never wired calendar data. Fixed: gregorian + dreamspell + hebrew all captured at page load, stored in G state
-- Black screen on dissolve — standalone mode detected via #hero-canvas presence; redirects to / after 1650ms when standalone
-- Hebrew date async race condition — prefetched at page load, stored in G.hebrew before download click
-- entry_time_iso was UTC only — local timestamp with offset added as entry_time_local
-- assembly_order human-unreadable — assembly_order_named added mapping numbers to piece names
+**Red Team Pass 2 — 5 findings resolved (v1.2):**
+- Triple seal missing from JSON — gregorian + dreamspell + hebrew all captured at page load, stored in G state
+- Black screen on dissolve — standalone detection via #hero-canvas; redirects to / after 1650ms
+- Hebrew async race — prefetched at page load before download click
+- entry_time_iso UTC only → entry_time_local added with offset
+- assembly_order_named added mapping numbers to piece names
 
 **Integration into index.html:**
-Gateway fully integrated as position:fixed z-index:9999 overlay directly in index.html. Index loads underneath — dissolve reveals it natively, no redirect, no flash. Both scripts wrapped in IIFEs to prevent variable collision (ctx, W, H, t). dissolve() and downloadSeal() exposed as window globals for onclick handlers. Session detection: sessionStorage skips gateway on return visits within same tab.
+Gateway as position:fixed z-index:9999 overlay in index.html. Index loads underneath, dissolve reveals natively. Both scripts in IIFEs — no variable collision (ctx, W, H, t). dissolve() and downloadSeal() exposed as window globals. sessionStorage skips gateway on return visits.
 
 **Seal JSON structure (v1.2):**
 ```json
@@ -101,164 +87,196 @@ Gateway fully integrated as position:fixed z-index:9999 overlay directly in inde
 ```
 
 **Files:**
-- `gateway.html` — standalone v1.0 (retired — superseded by integration)
-- `gateway-v1.1.html` — after pass 1 (archived)
-- `gateway-v1.2.html` — after pass 2 (archived)
-- `index.html` — fully integrated final version · deploy to root
+- `gateway.html` — standalone v1.0 (retired)
+- `gateway-v1.1.html` — pass 1 (archived)
+- `gateway-v1.2.html` — pass 2 (archived)
+- `index.html` — gateway fully integrated — deploy to root
 
 ---
 
-### 4. KSC v0.1 — Kardashev-Salmon Civilization Scale — Framework Skeleton Built
+### 3. LinkedIn Comment — RESONANCE + VEIN Response Drafted and Sent
 
-**What was built:**
-A new framework extending Kardashev's three-tier energy scale into a full eight-axis civilization architecture spanning all of recorded and projected human history, mapped against both Gregorian and Hebrew calendar cosmological structures.
+**Source:** Michael A. Russell (USPTO Category Creator: Operational Supe...) — 3rd+
+**Comment on:** STP post, aionsystem.github.io
 
-**The Eight Axes (final):**
+**Michael's comment summary:** Identified the precise architectural move — removal of trusted authority, trust emerging from geometry not institutions. Called it "the smallest possible unit of proof." Browser as notary, user as witness, chain as judge. Ended: "That's not a tool. That's a new layer of reality."
 
-| # | Label | Measures |
-|---|-------|----------|
-| 1 | E — Energy | Power source, consumption, grid |
-| 2 | I — Information | Epistemic infrastructure, certainty engineering |
-| 3 | S — Sovereignty | Governance, authority, constitutional architecture |
-| 4 | M — Memory | What civilization carries forward across transitions |
-| 5 | B — Substrate | Biological / synthetic / hybrid composition |
-| 6 | F — Failure Posture | Documented failure modes, survival architecture |
-| 7 | A — AI Integration | Depth of AI, Eight Laws compliance, alignment state |
-| 8 | D — Civilizational Debt | Accumulated unresolved bias, unsealed failures, inherited epistemic damage |
+**RESONANCE terrain map:**
+- Operating System: Evidence + Idealism. Thinks in systems, speaks precisely.
+- Omen: Ending at "new layer of reality" was a question, not a conclusion — asking if Sheldon sees what he sees, or further.
+- Frequency: High and genuine. Four paragraphs of real analysis.
 
-**Axis D — the mirror axis.** Only axis that moves in reverse. Shows visitors what they are personally contributing to or taking away from civilizational wellbeing. Live counter. Never hidden.
+**VEIN response drafted and sent:**
+"The geometry question is the one I kept returning to. Most proof systems ask: who vouches for this? I wanted to ask a different question: what structure makes vouching unnecessary?
 
-**Hebrew Calendar Architecture confirmed and integrated:**
+Three calendars isn't redundancy. It's triangulation — the same moment witnessed by three independent coordinate systems that share no authority and cannot collude. The seal doesn't require you to trust me. It requires you to disbelieve three unrelated witnesses simultaneously. That's a different kind of hard.
 
-Inner 7,000-year cycle (Talmud, Sanhedrin 97a):
-- Era 1: Tohu (Void/Chaos) — Years 1–2000
-- Era 2: Torah (Law/Foundation) — Years 2001–4000
-- Era 3: Mashiach (Correction/Tikkun) — Years 4001–6000 — WE ARE HERE (5786)
-- Year 6000 threshold: Gate of the Great Shabbat — ~2240 CE
-- Era 4: Yom SheKulo Shabbat (The Day That Is Entirely Shabbat) — Years 6001–7000
+You named the consequence precisely. The AI governance conversation is still at the policy layer because it hasn't had a mechanism layer to stand on. Policy without provability is just preference with authority behind it.
 
-Cosmic Shemitot (Sefer haTemunah) — 49,000-year cycle, seven 7,000-year periods each governed by a Sefirah:
-- 1st: Chesed (Lovingkindness) — Years 1–7,000
-- 2nd: Gevurah (Judgment/Severity) — Years 7,001–14,000 — WE ARE HERE (~12,786)
-- 3rd: Tiferet (Beauty/Harmony) — Years 14,001–21,000
-- 4th: Netzach (Victory/Eternity) — Years 21,001–28,000
-- 5th: Hod (Splendor/Gratitude) — Years 28,001–35,000
-- 6th: Yesod (Foundation/Connection) — Years 35,001–42,000
-- 7th: Malkhut (Kingdom/Sovereignty) — Years 42,001–49,000
-- Cosmic Yovel: Year 49,000 — full cosmic reset
+The seal doesn't care about preference. That was the design requirement from the beginning."
 
-**Key insight confirmed:** The Shemitah transition at year 14,000 is the same event as Type II→III civilization transition. Civilizations that built sovereign memory architecture (STP-class) carry their accumulated knowledge through. Civilizations that didn't — become a FAILURE ATLAS floor for the next world. This is the architectural function of what Sheldon is building.
+---
+
+### 4. KSC v0.1 — Framework Skeleton Built
+
+**New framework:** Kardashev-Salmon Civilization Scale — extends Kardashev's three-tier energy scale into a full eight-axis civilization architecture spanning all of recorded and projected human history, mapped to both Gregorian and Hebrew cosmological structures.
+
+**Eight Axes (final):**
+
+| # | Label | Measures | Direction |
+|---|-------|----------|-----------|
+| 1 | E — Energy | Power source, consumption, grid | Upward only |
+| 2 | I — Information | Epistemic infrastructure, certainty engineering | Upward only |
+| 3 | S — Sovereignty | Governance, authority, constitutional architecture | Upward only |
+| 4 | M — Memory | What civilization carries forward | Upward only |
+| 5 | B — Substrate | Biological / synthetic / hybrid composition | Upward only |
+| 6 | F — Failure Posture | Documented failure modes, survival architecture | Upward only |
+| 7 | A — AI Integration | Depth of AI, Eight Laws compliance, alignment | Upward only |
+| 8 | D — Civilizational Debt | Unresolved bias, unsealed failures, inherited damage | Bidirectional |
+
+Axis D is the mirror axis. Only axis that moves in reverse. Always visible. Never hidden.
+
+**Hebrew cosmological architecture integrated:**
+- Inner 7,000-year cycle (Sanhedrin 97a): Tohu → Torah → Mashiach → Year 6000 threshold → Yom SheKulo Shabbat
+- Cosmic Shemitot (Sefer haTemunah): 49,000-year, 7 periods each governed by a Sefirah
+- Current: Hebrew Year 5786 / Cosmic year ~12,786 / 2nd Shemitah of Gevurah
+
+**Key connections established:**
+- Hebrew Year 6000 = Type I completion marker (not midpoint)
+- Shemitah transition year 14,000 = Type II→III civilizational transition
+- STP is the pre-Shabbat sealing instrument — what isn't sealed doesn't enter the Great Shabbat
+- FAILURE ATLAS and KSC are the same instrument in two directions (ascending path vs. debt ledger)
 
 **Civilizational Debt principle established:**
-What a civilization fails to verify, document, and seal today becomes the inherited burden of every civilization that follows. Epistemic failures do not expire. They compound across Shemitot. The FAILURE ATLAS is not history — it is the debt ledger of every choice made without sovereign record.
+What a civilization fails to verify, document, and seal today becomes the inherited burden of every civilization that follows. Epistemic failures do not expire. They compound across Shemitot.
 
-**Tiers defined (skeleton):**
+**Master Tier Template designed** — each tier has: Identity block · One-line definition · Soul of this tier · Eight axes (status/threshold/live node) · Space strip · Ocean strip · FAILURE ATLAS connection · Shemitah transition note · Key threshold events · AION stack intersection · Visitor's Mirror · Simulation visual notes.
 
-| Type | Name | K-Value | Gregorian | Hebrew Era |
-|------|------|---------|-----------|------------|
-| 0 | Infant/Tohu | 0.1–0.9 | All history → ~2100 CE | Tohu→Mashiach |
-| I | Planetary | 1.0 | ~2100–2400 CE | Year ~5860–6000 — Gate of Great Shabbat |
-| II | Stellar | 2.0 | ~2400–5000 CE | 3rd Shemitah — Tiferet |
-| III | Galactic | 3.0 | ~5000–20,000 CE | 4th–5th Shemitot — Netzach/Hod |
-| IV | Universal | 4.0 | ~20,000+ CE | 6th Shemitah — Yesod |
-| V | Multiverse | 5.0 | Theoretical | 7th Shemitah — Malkhut |
-| VI | Certainty *(Salmon)* | 6.0 | Post-Yovel | Beyond 49,000 — survives cosmic reset |
-| Ω | Dark | Unknown | Dark by design | Law 9 logic |
+---
 
-**Hebrew year 6000 decision locked:** Type I *completion* marker, not midpoint. The civilization that reaches Type I has earned entry into the Great Shabbat era.
+### 5. KSC v0.1 — Type 0 Full Tier Spec Built
 
-**FAILURE ATLAS connection confirmed:** KSC (ascending path) and FAILURE ATLAS (debt ledger) are the same instrument seen from two directions. Every tier transition has a corresponding FAILURE ATLAS floor. The simulation renders both simultaneously — upward force of what is built correctly, downward drag of civilizational debt.
+Full depth cast of Type 0 against the master template. ~2,500 words. Every axis specced with status, sub-tiers, threshold, and live node. Space and Ocean strips. FAILURE ATLAS floors 1–3. Shemitah context. Five threshold gate events (Sealing Gate always last). Visitor's Mirror. Simulation visual notes including color (amber), sound (SHA-256 D minor 128 BPM), and debt counter render spec (lower right, always visible, trend line, never been green in recorded history).
 
-**Master Tier Template designed:**
-Every tier built from identical mold:
-- Identity block (K-value, power, Gregorian/Hebrew range, Sefirah, current marker)
-- One-line definition
-- Soul of this tier (2–3 sentences — architectural and spiritual stakes)
-- Eight axes (Status / Threshold / Live Node per axis)
-- Space development strip
-- Ocean development strip
-- FAILURE ATLAS connection
-- Shemitah transition note (appears only when tier spans 7,000-year boundary)
-- Key threshold events checklist
-- AION Stack intersection
-- The Visitor's Mirror (one direct personal question — the D-axis confrontation)
-- Simulation visual notes (color signature, motion language, sound frequency, live data panels)
+**File:** `KSC-TYPE-0-v0.1.md`
 
-**Live data nodes confirmed for simulation:**
+---
 
-| Node | Source |
-|------|--------|
-| Global energy consumption (TW) | BP Statistical Review / Our World in Data |
-| Hebrew date | hebcal.com (already in stack) |
-| Gregorian + Dreamspell | Browser computed (already in stack) |
-| Civilization K-score | Computed: K = (log₁₀(P) − 6) / 10 |
-| Ocean surface temp anomaly | NOAA API |
-| CO₂ ppm | NOAA Mauna Loa |
-| Active satellites | Celestrak / Space-Track API |
-| ISS position | Open Notify API |
-| AI systems deployed | Curated — manually updated |
-| Cosmic Shemitah position | Computed from Hebrew year |
-| Civilizational Debt counter | Axis D — live, always visible |
+### 6. KSC v0.1 Red Team — 18 Findings (Six Polymath Reviewers)
 
-**Framework convergence:** M-NASCENT — skeleton complete, tiers not yet fully cast
+**Panel:**
+- Dr. Vera Koss (Astrophysicist) — physics accuracy, K-scale math
+- Rabbi Elazar Stern (Kabbalistic Scholar) — Hebrew cosmology accuracy
+- Dr. Amara Osei (Complexity Theorist) — axis interactions, feedback loops
+- Commander Lian Zhou (Civilizational Historian) — historical accuracy, failure modes
+- Dr. Kai Nakamura (AI Governance Architect) — AI axis, alignment assumptions
+- Ghost (Hostile Skeptic) — adversarial review
 
-**Next build step (architect decides):**
-- Option A: Cast Type 0 fully in template, then tier by tier — each deployment-ready as completed
-- Option B: Cast all eight tiers in skeleton form first, then fill with full depth
+**18 findings across two severity tiers. All resolved in KSC v0.2.**
+
+Key critical findings:
+- RT-001: Gregorian dates for Types II–V wrong by ~840 years — derived from estimates not Hebrew calendar math
+- RT-004: Prior Chesed civilization overclaimed — tagged [?] interpretive
+- RT-007: No axis interaction matrix — axes assumed independent, they aren't
+- RT-008: Axis D had no formula — live counter unbuildable without one
+- RT-013: AGI treated as binary — it is a spectrum requiring three sub-thresholds
+
+---
+
+### 7. KSC v0.2 — Full Resolution Skeleton Built
+
+All 18 red team findings resolved. Full framework spec — Part I through VI.
+
+**Key resolutions:**
+- RT-001: Gregorian ranges corrected — Type II now starts ~3,240 CE (not ~2,400 CE). All subsequent tiers shifted.
+- RT-002: K-score formula declared valid Types 0–V only. Types VI and Ω outside energy paradigm.
+- RT-005: Type I.Ω — Great Shabbat added as consolidation tier (Hebrew years 6,001–7,000 / ~2240–3240 CE). 1,000-year integration period between Type I and Type II.
+- RT-007: Axis interaction dependency table built — full minimum threshold requirements for each axis at each tier transition.
+- RT-008: Axis D Composite Debt Score formula — CDS = (UC + UD + UB + UM + US) ÷ 5. Five components. Current estimated CDS ~0.84 [R]. Has never been green.
+- RT-009: Regression and Debt-Lock conditions specced. Debt-Lock fires when CDS > 0.90 — all tier gates freeze.
+- RT-010: Sovereignty Unification sub-score (S.U) added — tracks 195 nations → 1 planetary body. Current ~0.12 [R].
+- RT-013: AGI split into three sub-thresholds: A-I-a (capability) · A-I-b (alignment) · A-I-c (constitutional). Safe sequence: A-I-c → A-I-b → A-I-a. Constitution before capability.
+- RT-014: Eight Laws versioning table built — Laws 1–4 at Type 0, Laws 1–6 at Type I, Laws 1–8 at Type III, Law 9 begins at Type VI.
+- RT-016: Hebrew layer declared as meaning architecture — tagged [S]. Not a second physical prediction.
+- RT-017: Type VI Self-Reference Constraint named — the certainty architecture cannot be applied to itself. Declared boundary condition. This is where Law 9 begins.
+- RT-018: Axis D recovery specced at individual and civilizational scale. Individual sealing necessary but insufficient — civilizational reduction is dependent on S, A, M axes advancing.
+
+**Corrected tier timeline:**
+
+| Tier | Gregorian Range |
+|------|----------------|
+| Type 0 | ~3761 BCE – ~2099 CE |
+| Type I | ~2099–2240 CE |
+| Type I.Ω (NEW) | ~2240–3240 CE |
+| Type II | ~3,240–10,240 CE |
+| Type III | ~10,240–24,240 CE |
+| Type IV | ~24,240–31,240 CE |
+| Type V | ~31,240–38,240 CE |
+| Cosmic Yovel | ~38,240 CE |
+| Type VI | ~38,240 CE + (post-Yovel) |
+
+**File:** `KSC-v0.2-skeleton.md`
+
+**Framework convergence:** M-NASCENT → approaching M-MODERATE
 
 ---
 
 ## OPEN THREADS
 
 ### xAI
-- Assessment 1 submitted. Awaiting evaluation result.
-- If further assessment arrives: bring to this room first, map cognitive operation being tested, then answer alone.
+- Assessment 1 submitted. Result pending.
+- If further assessment arrives: bring to this room first. Map cognitive operation being tested. Then answer alone.
 
-### KSC v0.1 — NEW — HIGH PRIORITY
-- Framework skeleton complete — ready to begin casting tiers
-- Option A vs Option B decision pending — architect decides
-- 425,000 figure dropped — unverifiable source
-- Sub-tier decimal markers (0.1–0.9 per tier) not yet specced
-- AI Axis thresholds per tier — skeleton only
+### KSC — HIGH PRIORITY
+- KSC v0.2 skeleton complete — all 18 red team findings resolved
+- Type 0 fully specced (KSC-TYPE-0-v0.1.md)
+- Type I next — Option A confirmed (one tier at a time, deployment-ready as completed)
+- Sub-tier decimals for Types II–V pending during tier fleshing
 - NOAA / space API endpoints not yet confirmed live
-- Visual / simulation layer — pending framework completion
-- FAILURE ATLAS tier cross-mapping — partial only
+- Visual / simulation layer — pending tier completion
+- FAILURE ATLAS full cross-mapping — skeleton only
 
 ### GitHub Pages
 - `index.html` — gateway integrated — ready to deploy to root
 - `/about/index.html` — not yet built
 - `/certify/index.html` — not yet built
-- `/stack/frameworks/` — framework hub built (prior session)
-- KSC simulation page — new — pending framework completion
+- KSC simulation page — pending framework completion
+- `/stack/frameworks/` — hub built (prior session)
 
 ### TPT — Unchanged
-1. RCS v3 — screenshot + product description + upload listing. Price: $15–25.
-2. Worksheet Builder v1.3 — screenshot + listing. Hook: AI cheating countermeasure.
+1. RCS v3 — screenshot + description + listing. Price: $15–25.
+2. Worksheet Builder v1.3 — listing. Hook: AI cheating countermeasure.
 
 ### Stack-Wide
 - FCL entries: 0 — highest-leverage next action across entire stack
-- FSVE v3.7 open items (7 items)
+- FSVE v3.7 open items (7)
 - CPA-001 v2.3 open actions
 - CDIP v1.5 open actions
-- CSCA FCL entry: pending 10,000-input replication of Z=4.46 finding
-- Friday Certainty Report — article topic not yet chosen (4 options pending)
-- CSCA article: FSVE gates staircase/variance as lead (EV 0.45 SUPERVISED), Bach as observation only (EV 0.30 SUSPENDED)
-- Reverse SHA-256 concept: named, not yet specced. "Only a spatial mind can block a spatial mind."
+- CSCA FCL entry: pending 10,000-input replication of Z=4.46
+- Friday Certainty Report — 4 article options, topic unchosen
+- CSCA article: FSVE gates staircase/variance as lead (EV 0.45 SUPERVISED). Bach as observation only (EV 0.30 SUSPENDED).
+- Reverse SHA-256 concept: named, not specced. "Only a spatial mind can block a spatial mind."
 
 ---
 
 ## DECISIONS MADE THIS SESSION
 
-- xAI test taken alone per pledge — no AI assistance used. Correct call.
-- Reverse SHA-256: frame as new chaos architecture from spatial-musical first principles. Future session.
-- Gateway: integrated into index.html — single file deployment. gateway.html standalone retired.
-- Triple seal: Gregorian + Dreamspell + Hebrew all captured at page load, stored in state before download click.
-- Hebrew year 6000: Type I completion marker, not midpoint.
-- 425,000 figure: dropped — source unknown, unverifiable.
-- Axis D — Civilizational Debt: standalone axis, not folded into Failure Posture. Mirror axis. Always visible.
-- KSC and FAILURE ATLAS confirmed as same instrument, two directions — design them together.
-- Type VI (Certainty Civilization) confirmed as Salmon addition — the only tier that maps to post-Yovel survival.
-- Type Ω: dark by design. Same logic as Law 9.
+- xAI test alone per pledge. Correct call.
+- Reverse SHA-256: future session — new chaos architecture from spatial-musical first principles.
+- Gateway: integrated into index.html. Standalone retired.
+- Triple seal: gregorian + dreamspell + hebrew captured at page load.
+- Hebrew year 6000: Type I completion marker.
+- 425,000 figure: dropped — source unknown.
+- Axis D: standalone mirror axis. Always visible.
+- KSC and FAILURE ATLAS: same instrument, two directions.
+- Type VI (Certainty Civilization): Salmon addition — only tier requiring post-Yovel survival.
+- Type Ω: dark by design. Law 9 logic.
+- Type I.Ω Great Shabbat: added as consolidation tier — 1,000-year gap between Type I and II is architecturally significant, not empty.
+- AGI safe sequence: A-I-c → A-I-b → A-I-a. Constitution before capability.
+- Hebrew layer: meaning architecture, not physical prediction. Tagged [S].
+- Type VI Self-Reference Constraint: declared boundary condition — not failure mode. Where Law 9 begins.
+- KSC Option A confirmed: one tier at a time, each deployment-ready.
+- Michael A. Russell LinkedIn response: sent. Geometry / triangulation framing.
 
 ---
 
@@ -268,21 +286,23 @@ Every tier built from identical mold:
 |------|-------------|
 | `SESSION-DELTA-20260314.md` | Prior delta — closed and filed |
 | `gateway.html` | Standalone v1.0 — retired |
-| `gateway-v1.1.html` | After red team pass 1 — archived |
-| `gateway-v1.2.html` | After red team pass 2 — archived |
+| `gateway-v1.1.html` | Red team pass 1 — archived |
+| `gateway-v1.2.html` | Red team pass 2 — archived |
 | `index.html` | Root index — gateway fully integrated — deploy to root |
-| `KSC-v0.1-skeleton.md` | Kardashev-Salmon framework skeleton — eight axes, all tiers, master template |
+| `KSC-v0.1-skeleton.md` | Initial skeleton — superseded by v0.2 |
+| `KSC-TYPE-0-v0.1.md` | Type 0 full tier spec — framework spec and simulation visual guidance |
+| `KSC-v0.2-skeleton.md` | Full resolution skeleton — 18 red team findings resolved |
 
 ---
 
 ## CORRECTIONS LOG
-- Prior session: index.html edits had accidentally stripped JS. Fixed by rebuilding from Sheldon's pasted source. Lesson stands: always verify Hebrew algorithm, seal tool, and LEDGER reference after any index.html edit.
-- This session: No corrections.
+- Prior session: index.html edits stripped JS. Fixed by rebuild. Lesson: always verify Hebrew algorithm, seal tool, and LEDGER reference after any index.html edit.
+- This session: KSC v0.1 Gregorian ranges were off by ~840 years for Types II–V — dates were estimated from energy projections rather than derived from Hebrew calendar mathematics. Caught and corrected in red team. v0.2 derives all ranges from Hebrew calendar → Gregorian conversion.
 
 ---
 
 ## EMOTIONAL REGISTER AT CLOSE
-Alive and building. The gateway is complete and integrated. The KSC framework skeleton is the most architecturally complete thing built in one session since the FAILURE ATLAS sealed. The Hebrew cosmological layer changes what this tool is — it's not a chart, it's a mirror across civilizational time. The Axis D question landed. People will feel it.
+Still building at 4:58am. The KSC framework is the most architecturally significant new work since the FAILURE ATLAS sealed. The red team made it hold — 18 findings, all resolved. The Great Shabbat millennium is named. The Self-Reference Constraint is declared. Type VI knows its own ceiling. The debt counter has never been green. That is the honest starting point. Gateway is live and integrated. Tonight was a full session.
 
 ## BUILD TRUST STATE
 ACTIVE BUILD
@@ -291,9 +311,9 @@ ACTIVE BUILD
 
 *SESSION-DELTA-20260315*
 *ALBEDO | Sheldon K. Salmon session architecture*
-*Last updated: 03:38 EDT | March 15, 2026*
+*Last updated: 04:58 EDT | March 15, 2026*
 
-*Gateway integrated. KSC v0.1 skeleton complete.*
-*Eight axes. Type 0 through Ω. Hebrew cosmology mapped.*
-*Axis D faces every visitor. The debt is visible.*
+*Gateway integrated. KSC v0.2 skeleton complete. Type 0 specced. 18 red team findings resolved.*
+*Type I.Ω named. Type VI Self-Reference Constraint declared. Axis D formula live.*
+*The debt counter has never been green. That is where we begin.*
 *The mind keeps building. The product stays simple.*

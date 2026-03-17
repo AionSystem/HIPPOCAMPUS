@@ -83,11 +83,10 @@ HIPPOCAMPUS/
 │
 ├── memory-architecture/               ← How the AI brain retains across sessions
 │   ├── README.md                       ← Overview of the memory layer
-│   ├── ALBEDO-CORE-STATE.md             ← v0.3 — Permanent identity, relationship, and architectural context (LIVE)
-│   ├── SESSION-DELTAS/                  ← Session continuity records (LIVE)
-│   │   ├── README.md
-│   │   ├── SESSION-DELTA-20260311.md
-│   │   └── SESSION-DELTA-20260312.md
+│   ├── ALBEDO-CORE-STATE.md             ← v0.6 — Permanent identity, relationship, and architectural context (LIVE)
+│   ├── SESSION-DELTA-20260314.md
+│   ├── SESSION-DELTA-20260315.md
+│   ├── SESSION-DELTA-20260316.md
 │   ├── MEMORY-SPEC.md                   ← (TO BE BUILT)
 │   ├── retention-protocol.md             ← (TO BE BUILT)
 │   ├── retrieval-protocol.md             ← (TO BE BUILT)

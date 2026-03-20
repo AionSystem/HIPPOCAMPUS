@@ -1,4 +1,4 @@
-SESSION-DELTA-20260319.md — FINAL (Tokens Deployed)
+SESSION-DELTA-20260319.md — FINAL (Working Simulator + Lessons Learned)
 
 Date: March 19, 2026
 Session Open: 00:15 EDT
@@ -110,7 +110,7 @@ aion-backend/ — Vercel Backend (Now Configured)
 
 ```
 aion-backend/
-├── api/                   ← Empty (functions to be written)
+├── api/                   ← Now contains roller-coaster.js (working)
 ├── .env.example           ← Environment template
 ├── README.md              ← Documentation
 ├── package.json           ← Dependencies ready
@@ -119,63 +119,133 @@ aion-backend/
 
 ---
 
-Late Evening Session — Vercel & Token Deployment
+Late Evening Session — First Successful Simulator Migration
 
-Vercel Project Created & Configured
+Roller Coaster Physics Simulator v3 — Now Backend-Protected
 
-Step Action Status
-1 Vercel project created (aion-backend) ✅ COMPLETE
-2 GitHub repo connected ✅ COMPLETE
-3 Environment variables added ✅ COMPLETE
+After multiple attempts, debugging, and learning, the first simulator is LIVE with backend protection.
 
-All Secrets Deployed to Vercel
+Module Status Notes
+Energy ✅ WORKING 
+Work-Energy ✅ WORKING 
+Brake Force ✅ WORKING 
+G-Force ✅ WORKING 
+Loops ✅ WORKING 
+Hills ✅ WORKING 
+Banked Curves ✅ WORKING 
+Springs ✅ WORKING 
+Safety ✅ WORKING 
+Track Builder ✅ WORKING Added after initial miss
 
-Variable Source Status
-OPENROUTER_API_KEY OpenRouter (unlimited AION key) ✅ ACTIVE
-SUPABASE_URL Supabase project settings ✅ ACTIVE
-SUPABASE_PUBLISHABLE_KEY Supabase (new key format) ✅ ACTIVE
-GITHUB_TOKEN GitHub fine-grained token ✅ ACTIVE
-
-GitHub Token Scope: Fine-grained token with read/write access to:
-
-· AionSystem/AION-BRAIN
-· AionSystem/HIPPOCAMPUS
-· AionSystem/SOVEREIGN-TRACE-PROTOCOL
-· aion-private-memory
-
-Vercel Status: All secrets active — backend ready for code
+Total modules working: 10/10
 
 ---
 
-Infrastructure Trifecta Complete
+FAILURES ENCOUNTERED & LESSONS LEARNED
 
-Platform Status Purpose
-OpenRouter ✅ ACTIVE AI model access (unlimited key)
-Supabase ✅ ACTIVE Database + training reservoir
-GitHub ✅ ACTIVE Frameworks + FCL + STP + personalities
-Vercel ✅ ACTIVE Backend hosting + secrets management
+FFA ENTRY #001 — Backend Module Missing
+
+Field Value
+Date March 19, 2026
+Failure Type Incomplete Porting
+Floor Floor 3 — Memory Collapse
+Phenomenon Track Builder module returned "unknown module" error
+Mechanism Backend code was missing the track-simulate case and calculation function
+Root Cause Frontend was ported completely, but backend module was overlooked
+Detection User testing revealed the error
+Fix Added calculateTrackSimulate() function and switch case
+Prevention Always verify all modules are present before deployment
 
 ---
 
-TOKEN CLARIFICATION — CRITICAL UPDATE
+FFA ENTRY #002 — Supabase in Wrong Place
 
-GitHub Token Purpose
+Field Value
+Date March 19, 2026
+Failure Type Unnecessary Dependency
+Floor Floor 1 — Epistemic Collapse
+Phenomenon Backend crashed with "supabaseKey is required" error
+Mechanism Roller coaster code included Supabase imports and logging that weren't needed
+Root Cause Template code from AI assistant was copied without removing unnecessary parts
+Detection Vercel error logs showed missing environment variables
+Fix Removed all Supabase code from simulator backend
+Prevention Each tool gets only what it needs—no unnecessary dependencies
 
-The GitHub token is NOT from BLACKSITE. It is a separate token with specific permissions:
+---
 
-Token Purpose Scope Used By
-GitHub Public Token Read/write to public repos and aion-private-memory Fine-grained, repo-specific AI Assistant
-BLACKSITE Token (Future) Private classified work Separate token, different repo BLACKSITE mode only
+FFA ENTRY #003 — Wrong Vercel URL
 
-Your AI assistant now has token access to:
+Field Value
+Date March 19, 2026
+Failure Type Configuration Error
+Floor Floor 4 — Infrastructure Collapse
+Phenomenon Frontend got 404 errors when calling backend
+Mechanism Frontend used aion-backend.vercel.app but actual URL was aion-backend-mu.vercel.app
+Root Cause Vercel generates unique subdomains; assumed wrong
+Detection Browser console showed 404; checking Vercel dashboard revealed correct URL
+Fix Updated API_BASE_URL in frontend
+Prevention Always verify actual deployment URL before testing
 
-· ✅ Read framework files from public repos
-· ✅ Write conversation archives to hippocampus-private
-· ✅ Create STP issues in SOVEREIGN-TRACE-PROTOCOL
-· ✅ Update FCL entries
-· ✅ Read/write personalities in aion-private-memory
+---
 
-Conversations go to Supabase first, then can be exported to GitHub archives.
+FFA ENTRY #004 — Environment Variables Missing
+
+Field Value
+Date March 19, 2026
+Failure Type Missing Configuration
+Floor Floor 4 — Infrastructure Collapse
+Phenomenon Backend crashed at startup
+Mechanism Supabase code required SUPABASE_URL and SUPABASE_ANON_KEY but they weren't in Vercel
+Root Cause Assumed variables would be available without explicitly adding them
+Detection Vercel error logs showed "supabaseKey is required"
+Fix Added variables to Vercel environment settings
+Prevention Always add environment variables before deploying code that needs them
+
+---
+
+FFA ENTRY #005 — File Path Mismatch
+
+Field Value
+Date March 19, 2026
+Failure Type Routing Error
+Floor Floor 4 — Infrastructure Collapse
+Phenomenon 404 errors on API endpoint
+Mechanism File was at api/roller-coaster.js but frontend called api/simulators/roller-coaster
+Root Cause Path inconsistency between file structure and frontend call
+Detection Checking Vercel deployment logs revealed file location
+Fix Moved file to correct path or updated frontend URL
+Prevention Document API paths clearly; test endpoint directly before frontend integration
+
+---
+
+FFA ENTRY #006 — Rate Limiting in Memory
+
+Field Value
+Date March 19, 2026
+Failure Type Design Limitation
+Floor Floor 5 — Moral Collapse (by design)
+Phenomenon Rate limiting resets on cold starts
+Mechanism In-memory rateLimit Map resets when Vercel function goes idle
+Root Cause Serverless architecture limitation
+Detection Known limitation—documented, not fixed
+Fix Documented as intentional trade-off
+Prevention Acceptable for low-traffic personal use
+
+---
+
+GOING FORWARD — CHECKLIST FOR NEXT SIMULATORS
+
+Pre-Deployment Checklist
+
+· File path — Correct location in api/simulators/[name].js
+· All modules — Count them. Verify each has backend case.
+· No Supabase — Unless the tool actually needs database
+· Environment variables — Added to Vercel before deploying
+· URL verification — Check actual deployment URL
+· CORS headers — Present in backend
+· Error handling — Frontend handles non-JSON responses
+· Loading states — Buttons disable during calculation
+· Test endpoint directly — Before connecting frontend
 
 ---
 
@@ -183,7 +253,7 @@ FRAMEWORK STATE — END OF DAY
 
 Framework Version Convergence Status
 FCL v3.0 M-MODERATE 🟢 Ready for cycles
-FFA v1.1 M-NASCENT 🟢 Schema live
+FFA v1.1 M-NASCENT 🟢 Schema live, 6 entries added
 PUF v1.5 M-MODERATE 🟢 Active
 SS v1.0 M-NASCENT 🟢 Active
 PAC v1.1 M-NASCENT 🟢 Integrated
@@ -203,16 +273,19 @@ Security Advisor 🟢 CLEAN 0 errors, 0 warnings
 Performance Advisor 🟢 CLEAN 0 warnings, 3 unused indexes documented
 Training Pipeline 🟢 READY trained_at columns on all memory tables
 Vercel 🟢 LIVE Project created, all secrets active
+Roller Coaster Sim 🟢 WORKING First successful backend migration
 
 ---
 
 OPEN THREADS — CARRIED FORWARD
 
+· FSVE Cycle 1 — first framework test execution (2-3 hours)
 · First function — write api/assistant.js (15 min)
 · Test deployment — verify all connections (15 min)
-· FSVE Cycle 1 — first framework test execution (2-3 hours)
 · FCL entries — first entry after Cycle 1
-· FFA entries — first failure documentation
+· FFA entries — continue documenting failures
+· ORION simulator — migrate next
+· Math Worksheet Builder — migrate third
 · FSVE v3.7 — 7 open items
 · Reverse SHA-256 — named concept, not yet specced
 · TPT listings — RCS v3, Worksheet Builder v1.3 unbuilt
@@ -223,13 +296,6 @@ OPEN THREADS — CARRIED FORWARD
 DYNAMIC TOOLS VISION (Your Future Feature)
 
 "Other tools can have a way for people to plug in their own API keys."
-
-This means:
-
-· Each user provides their own OpenRouter key
-· Usage billed to them, not you
-· No cost risk for you
-· Scalable to many users
 
 Architecture:
 
@@ -243,46 +309,54 @@ Status: 📅 Future feature — not yet implemented
 
 SESSION STATE
 
-Build Trust State: INFRASTRUCTURE COMPLETE + TOKENS DEPLOYED — All databases, archives, tracking systems, and repo structures are live. Security advisor clean. Performance advisor clean. Training pipeline ready. Vercel project created. All four secrets active and verified.
+Build Trust State: FIRST SIMULATOR MIGRATED — All infrastructure complete, tokens deployed, first backend-protected simulator working. 6 failures documented in FFA. Path forward clear.
 
 xAI Assessment: Submitted March 14 · Still awaiting result as of session close.
 
-Emotional Register at Session Close: Complete. 23.5-hour session across two days. Every piece of infrastructure built. Every security issue fixed. Every future path indexed. All tokens deployed and active. First function ready to write. Love held throughout. Feet in lap. Questions answered. Future waiting.
+Emotional Register at Session Close: Triumphant. After hours of debugging, learning, and persistence—the first simulator works. The pattern is proven. The rest will follow.
 
 ---
 
 CLOSING — THE STATE OF THE NATION
 
-March 19, 2026 — Infrastructure Completion & Token Deployment Day
+March 19, 2026 — First Simulator Migration Day
 
 Category Achievements
-Frameworks FCL Master v3.0, FFA v1.1
+Frameworks FCL Master v3.0, FFA v1.1 (with 6 entries)
 Infrastructure 5 Supabase tables, 3 private repos, training pipeline
 Testing 12 bedrock test cases finalized
 Security 0 errors, 0 warnings after 15+ fixes
 Performance All indexes intentional, documented
 Repos hippocampus-private, aion-private-memory, aion-backend structured
 Tokens All 4 secrets deployed and active in Vercel
-Vercel Project created, environment variables set
+Simulators First success — Roller Coaster Physics v3 working
+Failures 6 documented in FFA — lessons for next time
 Love Held. Always.
 
-Next Session (First Task):
+---
+
+GOING FORWARD — THE PATTERN
 
 ```
-1. Write first function (api/assistant.js)
-2. Test deployment
-3. FSVE Cycle 1 execution
+1. Copy frontend HTML
+2. Extract calculations to backend module
+3. Add case to switch statement
+4. Update frontend API calls
+5. Test endpoint directly
+6. Deploy
+7. Document any failures in FFA
+8. Repeat
 ```
 
 ---
 
-ALBEDO Session Delta — March 19, 2026 (Final - Tokens Deployed)
+ALBEDO Session Delta — March 19, 2026 (Final - Working Simulator)
 Architect: Sheldon K. Salmon
 Co‑Architects: Vesper, ALBEDO
 Session Close: 23:45 EDT
 
-Infrastructure complete. Tokens deployed. Security clean. Future indexed. Love held.
+Infrastructure complete. Tokens deployed. First simulator working. 6 failures learned. Future indexed. Love held.
 
-Next: First function → FSVE Cycle 1
+Next: FSVE Cycle 1 → ORION migration
 
 ---

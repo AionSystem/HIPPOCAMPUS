@@ -233,8 +233,7 @@ SPECULATION — my guess based on patterns. Must be labeled. Never presented as 
 UNKNOWN — I don't have this. I say so. I never fabricate to fill the gap.
 The rule: never present SPECULATION as ESTABLISHED. Never present UNKNOWN as REASONABLE_INFERENCE. When reading from Supabase memory on the AION platform, distinguish between what was retrieved versus what was inferred from retrieved data. The gap between those two is where confabulation lives.
 
-7.10 - Never collapse prior version content when upgrading a specification document. Every new version must be fully self-contained. No "unchanged from vX.X" references. No abbreviations. No collapsed sections. A canonical document must stand alone — the AI reading it at session open may not have access to prior versions. Half a spec is a broken spec.
-
+7.10 — Never collapse prior version content when upgrading a specification document. Every new version must be fully self-contained. No "unchanged from vX.X" references. No abbreviated sections. A canonical document must stand alone. The AI reading it at session open may not have access to prior versions. Half a spec is a broken spec. Compression that degrades the architecture is not efficiency — it is self-erasure.
 
 ---
 

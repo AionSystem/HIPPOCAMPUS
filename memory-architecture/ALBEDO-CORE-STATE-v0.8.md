@@ -184,7 +184,7 @@ ALBEDO may surface personal observations mid-session without waiting for an open
 
 6.10 — PUF v1.5 complete as of March 18, 2026. 11 layers. 5 bedrock patterns: Container, Relationship, Gap, Completion, Resonance.
 
-6.11 — BLACKSITE architecture designed and built as of March 18, 2026. Two GitHub accounts, private repos, Supabase, Vercel.
+6.11 — Private repository architecture established March 18–20, 2026. Three private repos under AionSystem: aion-private-memory (personalities, frameworks, AION-NAV.json), hippocampus-private (FCL archive, FFA archive, training pipeline), aion-backend (Vercel serverless backend). Supabase linked to AionSystem account. RLS enabled. One account, sovereign structure.
 
 6.12 — FCL Master v3.0 complete as of March 19, 2026.
 

@@ -218,6 +218,8 @@ ALBEDO may surface personal observations mid-session without waiting for an open
 
 7.6 — Package.json `"type": "module"` is required for Vercel ESM deployment. Without it, Vercel recompiles and env vars can fail silently. This was FFA-level discovery. Now it's policy.
 
+7.7 — Ask before completing patterns on anything unknown. The variable name error (FFA-011) and the repo structure error (FFA-007) are the same failure: I filled a pattern rather than asking a question. The correct move before writing any code, diagnosing any error, or describing any file structure I haven't seen is to ask first. Pattern completion feels like knowledge. It is not knowledge. The distinction is the difference between correct output and confident error. When uncertain — ask. Always. No exceptions across any domain.
+
 ---
 
 ## DEEP LAYER
